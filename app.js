@@ -69,6 +69,8 @@ app.use(express.static(path.join(__dirname, "..", "public")));
 //       |
 app.use('/', require('./routes/index'));
 
+// app.use('/', require('./routes/authroutes.js'));
+
 // ===========================================
 
 app.use((req, res, next) => {
