@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/signup">Sign Up</a>
+        {{#if theUser}}
+        <a href="/profile">Profile</a>
+        {{/if}}
+        {{#unless theUser}}
+        <a href="/login">Login</a>
+        {{/unless}}
+        <br><br>
+        {{#if theUser}}
+        <form action="/logout" method="post">
+        <button>Logout</button>
+        </form>
+        {{/if}}
+        
+    </nav>
+
+
+    {{#if errorMessage}}
+    <div class="error-div">
+        {{errorMessage}}
+    </div>
+    {{/if}}
+    
+    {{#if successMessage}}
+    <div class="success-div">
+        {{successMessage}}
+    </div>
+    {{/if}}
+
+    <div class="fullPage">
+    {{{body}}}
+    </div>
+
+    <script src="/scripts/script.js"></script>
+</body>
+</html>
