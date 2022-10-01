@@ -58,8 +58,19 @@ router.get('/login', (req, res, next)=>{
       .catch(error => console.log(error));
   });
 
+  // ================ PROFILE
 
-  //================ CHANGE PASSWORD
+  router.get('/profile', (req, res, next)=>{
+    User.findById(req.session.currentlyLoggedIn._id)//.populate('location')
+    .then((theUser)=>{
+      res.render('auth/profile', {theUser: theUser})
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+  })
+
+  //------------- CHANGE PASSWORD
 router.get('/change-password', (req, res, next)=>{
     res.render("auth/changepassword", {theUser: req.session.currentlyLoggedIn});
   })
@@ -68,7 +79,7 @@ router.get('/change-password', (req, res, next)=>{
   router.post('/new-password', (req, res, next)=>{
   
     if(req.body.newpass !== req.body.confirmnewpass){
-      res.redirect("/profile")
+      res.redirect("auth/profile")
       // need to show an error message here but cant yet
     }
   
@@ -86,14 +97,20 @@ router.get('/change-password', (req, res, next)=>{
           })
           .then(()=>{
             res.redirect('/profile');
-  
-          })
+          }) 
         })
           .catch((err)=>{
             next(err);
           })
     }
   })
+  })
+
+  router.post('/logout', (req, res, next)=>{
+    req.session.destroy(err => {
+      if (err) console.log(err);
+      res.redirect('/');
+    });
   })
 
 

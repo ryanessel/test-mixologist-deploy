@@ -10,11 +10,11 @@
 <body>
     <nav>
         <a href="/">Home</a>
-        <a href="/signup">Sign Up</a>
         {{#if theUser}}
-        <a href="/profile">Profile</a>
+        <a href="/profile">Profile <img src="https://static.wikia.nocookie.net/monsterhunter/images/c/c6/MHRS-Shagaru_Magala_Render_001.png" alt="FAIL"></a>
         {{/if}}
         {{#unless theUser}}
+        <a href="/signup">Sign Up</a>
         <a href="/login">Login</a>
         {{/unless}}
         <br><br>

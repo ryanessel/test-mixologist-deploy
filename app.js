@@ -13,7 +13,7 @@ require('dotenv').config();
 // =========== connection to DB =============
 
 mongoose
-  .connect('mongodb://localhost/expressApp')
+  .connect('mongodb://localhost/mixologist')
   .then(x => console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`))
   .catch(err => console.error('Error connecting to mongo', err));
 
@@ -43,7 +43,7 @@ app.use(
         maxAge: 600000
       }, // ADDED code below !!!
       store: MongoStore.create({
-        mongoUrl: 'mongodb://localhost/expressApp'
+        mongoUrl: 'mongodb://localhost/mixologist'
       })
     })
   );
@@ -75,7 +75,7 @@ app.use('/', require('./routes/authroutes.js'));
 
 app.use((req, res, next) => {
     // this middleware runs whenever requested page is not available
-    res.status(404).render("not-found-page");
+    res.status(404).render("error-page");
   });
 
 app.use((err, req, res, next) => {
