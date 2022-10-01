@@ -4,7 +4,9 @@ const {Schema, model} = mongoose;
 const userSchema = new Schema({
     username: String,
     password: String,
-    image: String
+    image: String,
+    imageName: String,
+    active: Boolean,
     }, {
         timestamps: true
     });

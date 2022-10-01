@@ -1,0 +1,15 @@
+<h3>Inactivate Account</h3>
+<h4>Username: {{theUser.username}}</h4>
+
+<div id="inactivateUserSection">
+<form action="/inactivateUser" method="post">
+<h2><strong>ARE YOU SURE YOU WANT TO INACTIVATE YOUR USER?</strong></h2>
+<h3>You will have to contact support and wait 24-48 hours to re-activate you account</h3>
+ 
+<button onclick="changeText()">Inactivate Account</button>
+</div>
+
+<div id="confirmInactivation" style="display: none;">
+    <h2>User has been inactivated successfully.</h2>
+</div>
+</form>

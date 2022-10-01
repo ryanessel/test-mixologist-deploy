@@ -10,17 +10,20 @@
 <body>
     <nav>
         <a href="/">Home</a>
-        {{#if theUser}}
-        <a href="/profile">Profile <img src="https://static.wikia.nocookie.net/monsterhunter/images/c/c6/MHRS-Shagaru_Magala_Render_001.png" alt="FAIL"></a>
-        {{/if}}
         {{#unless theUser}}
         <a href="/signup">Sign Up</a>
         <a href="/login">Login</a>
         {{/unless}}
-        <br><br>
         {{#if theUser}}
-        <form action="/logout" method="post">
-        <button>Logout</button>
+        {{#if theUser.image}}
+        <a href="/profile">Profile <img src={{theUser.image}} alt="FAIL" id="profileSmallImg"></a>
+        {{/if}}
+        {{#unless theUser.image}}
+        <a href="/profile">Profile <img src='/images/noProfileImage.png' alt="FAIL" id="profileSmallImg"></a>
+        {{/unless}}
+        
+        <form id="logout" action="/logout" method="post">
+        <a href='#' onclick="logoutButton()">Logout</a>
         </form>
         {{/if}}
         

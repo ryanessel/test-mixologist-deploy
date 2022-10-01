@@ -2,6 +2,18 @@ const express = require('express');
 const router = express.Router();
 const bcryptjs = require('bcryptjs');
 const User = require("../models/User.model")
+const uploadSys = require('../config/cloudinary.js');
+const { handlebars } = require('hbs');
+/* //code to be used to delete images from DB once user replaces their profile image.
+const cloudinaryPKG = require('cloudinary').v2;
+
+cloudinaryPKG.config({
+  cloud_name: "nemuidb"
+  ,api_key: process.env.CLOUDAPI
+  ,api_secret: process.env.CLOUDSECRET
+});
+*/
+
 
 //================SIGN-UP
 router.get('/signup', (req, res, next) => {
@@ -18,8 +30,12 @@ router.post('/signup', (req, res, next)=>{
       User.create({
         username: req.body.username,
         password: hashedPassword,
+        active: true
     })
-      res.redirect('/')
+    setTimeout(() => {
+      req.flash('success', 'User has been created successfully');
+      res.redirect('/login');
+    }, 500);  
     })
     .catch(error => next(error));
 });
@@ -43,10 +59,15 @@ router.get('/login', (req, res, next)=>{
           req.flash('error', 'could not find that username')
           res.redirect('/login');
           return;
-        } else if (bcryptjs.compareSync(req.body.password, resultFromDB.password)) {
-          console.log("found user", resultFromDB);
+        }
+        else if (resultFromDB.active === false){
+          req.flash('error', 'User is inactive, please contact support')
+          res.redirect('/login')
+        }
+        else if (bcryptjs.compareSync(req.body.password, resultFromDB.password)) {
+          // console.log("found user", resultFromDB);
           req.session.currentlyLoggedIn = resultFromDB;
-          console.log(req.session);
+          // console.log(req.session);
           req.flash('success', 'Successfully Logged In as ' + resultFromDB.username);
           res.redirect('/profile');
           return;
@@ -67,6 +88,26 @@ router.get('/login', (req, res, next)=>{
     })
     .catch((err)=>{
       console.log(err)
+    })
+  })
+
+  router.post('/update-profile-image', uploadSys.single(`profileIMG`), (req, res, next) => {
+
+    User.findById(req.session.currentlyLoggedIn._id)
+    .then((theUser)=>{
+      if(!!theUser.imageName){
+        console.log(`delete would go here`)
+        //cloudinaryPKG.uploader.destroy('joker', function(result) { console.log(result) });
+      }
+    })
+
+    User.findByIdAndUpdate(req.session.currentlyLoggedIn._id, {
+      image: req.file.path
+      ,imageName: req.file.originalname
+    }).then(()=>{
+      res.redirect('/profile')
+    }).catch((err)=>{
+      next(err)
     })
   })
 
@@ -106,6 +147,30 @@ router.get('/change-password', (req, res, next)=>{
   })
   })
 
+
+
+//=============== INACTIVATE USER
+router.get('/inactivateUser', (req,res,next)=>{
+  res.render("auth/inactivateUser", {theUser: req.session.currentlyLoggedIn});
+});
+
+router.post('/inactivateUser', (req,res,next)=>{
+  User.findByIdAndUpdate(req.session.currentlyLoggedIn._id,{
+    active: false
+  }).then(()=>{
+
+    req.session.destroy(err => {
+      if (err) console.log(err);
+    });
+
+  setTimeout(() => {
+    res.redirect('/')
+  }, 2000);
+
+  })
+})
+
+//=============== LOGOUT
   router.post('/logout', (req, res, next)=>{
     req.session.destroy(err => {
       if (err) console.log(err);
