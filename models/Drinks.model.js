@@ -23,6 +23,7 @@ const drinkSchema = new Schema({
     image: String,
     url: String,
     price: Number,
+    tags: [],
     }, {
         timestamps: true
     });

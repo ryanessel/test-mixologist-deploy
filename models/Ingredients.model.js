@@ -4,6 +4,7 @@ const {Schema, model} = mongoose;
 const ingredientsSchema = new Schema({
     name: String,
     type: String,
+    description: String,
     image: String,
     url: String,
     createdBy: {
