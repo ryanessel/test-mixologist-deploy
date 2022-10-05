@@ -7,11 +7,15 @@ const ingredientsSchema = new Schema({
     description: String,
     image: String,
     url: String,
-    createdBy: {
-                type: Schema.Types.ObjectId,
-                ref: "User"
-    },
     price: Number,
+    createdBy: {
+        type: Schema.Types.ObjectId,
+        ref: "User"
+    },
+    modifiedBy: {
+        type: Schema.Types.ObjectId,
+        ref: "User"
+    },
     }, {
         timestamps: true
     });

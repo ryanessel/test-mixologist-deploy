@@ -1,5 +1,6 @@
 <h2>Create Ingredient</h2>
 
+<form action="/createingredient" method="post" enctype="multipart/form-data">
 <label for="name">Name
     <input type="text" name="name">
 </label>
@@ -22,7 +23,7 @@
 <br>
 
 <label for="Description">Description
-    <input type="text" name="Description">
+    <input type="text" name="description">
 </label>
 <br>
 <br>
@@ -33,8 +34,8 @@
 <br>
 <br>
 
-<label for="Created By">Created By
-    <input type="text" name="Created By">
+<label for="URL">Website to Purchase
+    <input type="text" name="URL">
 </label>
 <br>
 <br>
@@ -47,6 +48,5 @@
 <br>
 <br>
 
-<form action="/ingredientdetails" method="post" enctype="multipart/form-data">
 <button>Create</button>
 </form>

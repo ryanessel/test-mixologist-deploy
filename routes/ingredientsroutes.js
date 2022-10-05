@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Ingredients = require("../models/Ingredients.model")
+const User = require("../models/User.model")
 const uploadSys = require('../config/cloudinary.js');
 
 router.get('/ingredientlist', (req, res, next) => {
@@ -13,16 +14,30 @@ router.get('/createingredient', (req, res, next) => {
     res.render('ingredients/createingredient');
 })
 
-router.post('/createingredient', (req, res, next)=>
+//TEST FURTHER, CAN YOU UPLOAD INGREDIENT WITHOUT IMAGE
+router.post('/createingredient', uploadSys.single('drinkIMG'), (req, res, next)=>
 {
-   Ingredients.create({
-    name:
-    type:
-    description:
-    image:
-    url:
-    price:
-   })
+    let imageFileName;
+    if(typeof req.file.originalname !== 'undefined'){
+        imageFileName = req.file.originalname
+    } else {
+        imageFileName = 'None'
+    }
+    User.findById(req.session.currentlyLoggedIn._id)
+    .then((theUser) =>{
+        Ingredients.create({
+             name: req.body.name
+            ,type: req.body.type
+            ,description: req.body.description
+            ,image: imageFileName
+            ,url: req.body.url
+            ,price: req.body.price
+            ,createdBy: theUser
+        })
+        res.redirect('/ingredientdetails')
+    })
+    .catch(error => next(error));
+
 })
 
 
