@@ -4,15 +4,17 @@ const Ingredients = require("../models/Ingredients.model")
 const User = require("../models/User.model")
 const uploadSys = require('../config/cloudinary.js');
 
+
+//--------INGREDIENT LIST
 router.get('/ingredientlist', (req, res, next) => {
     res.render('ingredients/ingredientlist');
 })
 
-
-
+//-------CREATE INGREDIENTS
 router.get('/createingredient', (req, res, next) => {
     res.render('ingredients/createingredient');
 })
+
 
 //TEST FURTHER, CAN YOU UPLOAD INGREDIENT WITHOUT IMAGE
 router.post('/createingredient', uploadSys.single('drinkIMG'), (req, res, next)=>
@@ -41,9 +43,9 @@ router.post('/createingredient', uploadSys.single('drinkIMG'), (req, res, next)=
 })
 
 
-
 router.get('/ingredientdetails', (req, res, next) => {
     res.render('ingredients/ingredientdetails');
 })
+
 
 module.exports = router;
