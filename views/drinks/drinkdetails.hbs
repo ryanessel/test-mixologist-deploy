@@ -1,0 +1,19 @@
+{{#if theUser}}
+<h2>Drink Details</h2>
+<div>
+    <h3>{{ingredient.name}}</h3>
+    <h4>Name: {{ingredient.name}}</h4>
+    <h4>Type: {{ingredient.type}}</h4>
+    <h4>Description: {{ingredient.description}}</h4>
+    <h4>Picture: {{ingredient.picture}}</h4>
+    <h4>Website to purchase: {{ingredient.url}}</h4>
+    <h4>Price: {{ingredient.price}}</h4>
+</div>
+
+        <a class="edit" href="/ingredients/{{this.id}}/edit">Edit</a>
+        
+        <form action="/ingredients/{{this.id}}/delete" method="post">
+        <button  class="delete" type="submit">Delete</button>
+        </form>
+
+{{/if}}
