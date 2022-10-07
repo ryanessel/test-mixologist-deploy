@@ -4,12 +4,13 @@ const Ingredients = require("../models/Ingredients.model")
 const User = require("../models/User.model")
 const uploadSys = require('../config/cloudinary_ing.js');
 
+
+//--------INGREDIENT LIST
 router.get('/ingredientlist', (req, res, next) => {
     res.render('ingredients/ingredientlist');
 })
 
-
-
+//-------CREATE INGREDIENTS
 router.get('/createIngredient', (req, res, next) => {
     res.render('ingredients/createingredient');
 })
@@ -45,9 +46,9 @@ router.post('/createingredient',uploadSys.single('ingIMG'), (req, res, next)=>{
 })
 
 
-
 router.get('/ingredientdetails', (req, res, next) => {
     res.render('ingredients/ingredientdetails');
 })
+
 
 module.exports = router;
