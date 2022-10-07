@@ -8,10 +8,6 @@ const ingredientsSchema = new Schema({
     image: String,
     url: String,
     price: Number,
-    createdBy: {
-        type: Schema.Types.ObjectId,
-        ref: "User"
-    },
     modifiedBy: {
         type: Schema.Types.ObjectId,
         ref: "User"

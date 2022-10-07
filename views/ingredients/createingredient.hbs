@@ -1,13 +1,14 @@
 <h2>Create Ingredient</h2>
-
-<form action="/createingredient" method="post" enctype="multipart/form-data">
-<label for="name">Name
+<form action="/createIngredient" method="post" enctype="multipart/form-data">
+<div>Name
     <input type="text" name="name">
-</label>
-<br>
-<br>
+</div>
 
-<label>Type</label> <select name="type" id="type">
+<br><br>
+
+<div>
+Type
+<select name="type" id="type">
         <option value="Syrup">Syrup</option>
         <option value="Fruit">Fruit</option>
         <option value="Carbonated mixers">Carbonated mixers</option>
@@ -19,34 +20,38 @@
         <option value="Sauces">Sauces</option>
         <option value="Prepared mixes">Prepared mixes</option>
     </select>
-    <br>
-<br>
+</div>
 
-<label for="Description">Description
+<br><br>
+
+<div> Description
     <input type="text" name="description">
-</label>
-<br>
-<br>
+</div>
 
-<label for="picture">Picture
-   <input type="file" name="drinkIMG" accept="image/png, image/gif, image/jpeg">
-</label>
-<br>
-<br>
+<br><br>
 
-<label for="URL">Website to Purchase
+<div> Website to Purchase
     <input type="text" name="URL">
-</label>
-<br>
-<br>
+</div>
 
-<label for="price">Price
+<br><br>
+
+<div>
+Price
     <input type="text" name="price">
-</label>
+</div>
 
+<br><br>
 
-<br>
-<br>
+<div>
+Picture
+   <input type="file" name="ingIMG" accept="image/png, image/gif, image/jpeg">
+</div>
+
+<br><br>
 
 <button>Create</button>
 </form>
+
+
+

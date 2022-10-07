@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Ingredients = require("../models/Ingredients.model")
 const User = require("../models/User.model")
-const uploadSys = require('../config/cloudinary.js');
+const uploadSys = require('../config/cloudinary_ing.js');
 
 router.get('/ingredientlist', (req, res, next) => {
     res.render('ingredients/ingredientlist');
@@ -10,34 +10,38 @@ router.get('/ingredientlist', (req, res, next) => {
 
 
 
-router.get('/createingredient', (req, res, next) => {
+router.get('/createIngredient', (req, res, next) => {
     res.render('ingredients/createingredient');
 })
 
-//TEST FURTHER, CAN YOU UPLOAD INGREDIENT WITHOUT IMAGE
-router.post('/createingredient', uploadSys.single('drinkIMG'), (req, res, next)=>
-{
-    let imageFileName;
-    if(typeof req.file.originalname !== 'undefined'){
-        imageFileName = req.file.originalname
+router.post('/createingredient',uploadSys.single('ingIMG'), (req, res, next)=>{
+
+    let img
+    if(typeof req.file == 'undefined'){
+        img = 'NoneSelected'
     } else {
-        imageFileName = 'None'
-    }
-    User.findById(req.session.currentlyLoggedIn._id)
-    .then((theUser) =>{
-        Ingredients.create({
+       img = req.file.path
+    };
+
+    Ingredients.create({
              name: req.body.name
             ,type: req.body.type
             ,description: req.body.description
-            ,image: imageFileName
             ,url: req.body.url
             ,price: req.body.price
-            ,createdBy: theUser
-        })
-        res.redirect('/ingredientdetails')
+            ,image: img
+        }).then((createdIng) => {
+            console.log({createdIng})
+            User.findByIdAndUpdate(req.session.currentlyLoggedIn._id,{$push: {ingredientsCreated: createdIng._id}}, {new: true})
+            .then((updatedUser) => {
+                req.session.currentlyLoggedIn = updatedUser;
+
+                console.log({seshUserIng: req.session.currentlyLoggedIn.ingredientsCreated, updatedUser});
+                res.redirect(`/ingredientdetails/${createdIng._id}`)
+            }).catch((err) => console.log(err))
+
     })
     .catch(error => next(error));
-
 })
 
 

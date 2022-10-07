@@ -2,17 +2,8 @@ const express = require('express');
 const router = express.Router();
 const bcryptjs = require('bcryptjs');
 const User = require("../models/User.model")
-const uploadSys = require('../config/cloudinary.js');
-const { handlebars } = require('hbs');
-/* //code to be used to delete images from DB once user replaces their profile image.
-const cloudinaryPKG = require('cloudinary').v2;
-
-cloudinaryPKG.config({
-  cloud_name: "nemuidb"
-  ,api_key: process.env.CLOUDAPI
-  ,api_secret: process.env.CLOUDSECRET
-});
-*/
+const uploadSys = require('../config/cloudinary_auth.js');
+// const { handlebars } = require('hbs');
 
 
 //================SIGN-UP
@@ -21,6 +12,7 @@ router.get('/signup', (req, res, next) => {
 })
 
 router.post('/signup', (req, res, next)=>{
+    console.log(req.body)
     const saltRounds = 12;
     bcryptjs
     .genSalt(saltRounds)
@@ -82,6 +74,7 @@ router.get('/login', (req, res, next)=>{
   // ================ PROFILE
 
   router.get('/profile', (req, res, next)=>{
+    console.log(req.session.currentlyLoggedIn)
     User.findById(req.session.currentlyLoggedIn._id)//.populate('location')
     .then((theUser)=>{
       res.render('auth/profile', {theUser: theUser})
@@ -104,7 +97,9 @@ router.get('/login', (req, res, next)=>{
     User.findByIdAndUpdate(req.session.currentlyLoggedIn._id, {
       image: req.file.path
       ,imageName: req.file.originalname
-    }).then(()=>{
+    },{new: true}
+    ).then((updatedUser)=>{
+      req.session.currentlyLoggedIn = updatedUser
       res.redirect('/profile')
     }).catch((err)=>{
       next(err)

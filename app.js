@@ -40,7 +40,7 @@ app.use(
       resave: true,
       saveUninitialized: true,
       cookie: {
-        maxAge: 600000
+        maxAge: 6000000
       }, // ADDED code below !!!
       store: MongoStore.create({
         mongoUrl: 'mongodb://localhost/mixologist'
