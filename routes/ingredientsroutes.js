@@ -10,7 +10,7 @@ router.get('/ingredientlist', (req, res, next) => {
     res.render('ingredients/ingredientlist');
 })
 
-//-------CREATE INGREDIENTS
+//-------ROUTE TO CREATE INGREDIENTS
 router.get('/createIngredient', (req, res, next) => {
     res.render('ingredients/createingredient');
 })
@@ -45,10 +45,11 @@ router.post('/createingredient',uploadSys.single('ingIMG'), (req, res, next)=>{
     .catch(error => next(error));
 })
 
-
+//---------ROUTE TO INGREDIENT DETAILS
 router.get('/ingredientdetails', (req, res, next) => {
     res.render('ingredients/ingredientdetails');
 })
+
 
 
 module.exports = router;
