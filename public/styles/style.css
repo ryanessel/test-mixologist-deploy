@@ -43,3 +43,8 @@
     border: 1px solid #ccc;
     border-top: none;
    }
+
+   h1{
+    margin-bottom: 0px;
+    margin-top: 1vw;
+   }

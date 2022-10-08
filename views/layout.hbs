@@ -9,28 +9,39 @@
 </head>
 <body>
     <nav>
+        <div id="topNavBar">
         <a href="/">Home</a>
         <a href="/ingredientlist">Ingredients</a>
-        <a href="/ingredientdetails">Ingredient Details</a>
+        <a href="/liquorlist">Liquors</a>
         <a href="/drinklist">Drinks</a>
-        <a href="/drinkdetails">Drink Details</a>
+        </div>
+
+        <br>
+
+
         {{#unless theUser}}
+        <div id="loggedOutBottomNavBar"></div>
         <a href="/signup">Sign Up</a>
         <a href="/login">Login</a>
+        </div>
         {{/unless}}
+
+
         {{#if theUser}}
+        <div id="loggedInBottomNavBar"></div>
         {{#if theUser.image}}
         <a href="/profile">Profile <img src={{theUser.image}} alt="FAIL" id="profileSmallImg"></a>
         {{/if}}
         {{#unless theUser.image}}
         <a href="/profile">Profile <img src='/images/noProfileImage.png' alt="FAIL" id="profileSmallImg"></a>
         {{/unless}}
-        
         <form id="logout" action="/logout" method="post">
         <a href='#' onclick="logoutButton()">Logout</a>
         </form>
+        </div>
         {{/if}}
-        
+
+
     </nav>
 
 
