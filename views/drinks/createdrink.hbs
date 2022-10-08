@@ -1,7 +1,7 @@
 <h2>Create Drink</h2>
 
 <form action="/createdrink" method="post" enctype="multipart/form-data">
-<label for="name">Name
+<label for="name">Cocktail Name
     <input type="text" name="name">
 </label>
 <br>
@@ -9,6 +9,7 @@
 
 
 <label>Base Spirit</label> <select name="type" id="type">
+        <option value=""></option>
         <option value="Vodka">Vodka</option>
         <option value="Tequila">Tequila</option>
         <option value="Gin">Gin</option>
@@ -21,6 +22,7 @@
 <br>
 
 <label>Vodka</label> <select name="type" id="type">
+        <option value=""></option>
         <option value="Plain Vodka">Plain Vodka</option>
         <option value="Flavored Vodka">Flavored Vodka</option>
         <option value="Infused Vodka">Infused Vodka</option>
@@ -29,6 +31,7 @@
 <br>
 
 <label>Tequila</label> <select name="type" id="type">
+        <option value=""></option>
         <option value="Anejo">Anejo</option>
         <option value="Mezcal">Mezcal</option>
         <option value="Blanco">Blanco</option>
@@ -39,6 +42,7 @@
 <br>
 
 <label>Whiskey</label> <select name="type" id="type">
+        <option value=""></option>
         <option value="Bourbon">Bourbon</option>
         <option value="Single Malt Scotch">Single Malt Scotch</option>
         <option value="Blended Malt Scotch">Blended Malt Scotch</option>
@@ -54,6 +58,7 @@
 <br>
 
 <label>Rum</label> <select name="type" id="type">
+        <option value=""></option>
         <option value="Spiced Rum">Spiced Rum</option>
         <option value="Aged Rum">Aged Rum</option>
         <option value="White Rum">White Rum</option>
@@ -63,6 +68,7 @@
 
 
 <label>Gin</label> <select name="type" id="type">
+        <option value=""></option>
         <option value="London Dry Gin">London Dry Gin</option>
         <option value="Plymouth Gin">Plymouth Gin</option>
         <option value="Old Tom Gin">Old Tom Gin</option>
@@ -73,6 +79,7 @@
 <br>
 
 <label>Brandy</label> <select name="type" id="type">
+        <option value=""></option>
         <option value="Spiced Rum">Cognac</option>
         <option value="Aged Rum">Armagnac</option>
         <option value="White Rum">Calvados</option>
@@ -87,7 +94,48 @@
     <br>
 <br>
 
+<label>Cordial</label> <select name="type" id="type">
+        <option value=""></option>
+        <option value="Chocolate">Chocolate</option>
+        <option value="Crème">Crème</option>
+        <option value="Coffee">Coffee</option>
+        <option value="Herbal">Herbal</option>
+        <option value="Floral">Floral</option>
+        <option value="Nutty">Nutty</option>
+        <option value="Citrus">Citrus</option>
+        <option value="Fruity">Fruity</option>
+        <option value="Berry">Berry</option>
+        <option value="Cream">Cream</option>
+        <option value="Honey">Honey</option>
+    </select>
+    <br>
+<br>
 
+<label for="Build">Build
+    <input type="text" name="Build">
+</label>
+<br>
+<br>
+
+<label>Glasswear</label> <select name="type" id="type">
+        <option value=""></option>
+        <option value="Highball">Highball</option>
+        <option value="Mug">Mug</option>
+        <option value="Rocks Glass">Rocks Glass</option>
+        <option value="Tumbler">Tumbler</option>
+        <option value="Martini Glass">Martini Glass</option>
+        <option value="Margarita Glass">Margarita Glass</option>
+        <option value="Hurricane Glass">Hurricane Glass</option>
+        <option value="Shooter">Shooter</option>
+        <option value="Snifter">Snifter</option>
+        <option value="Collins">Collins</option>
+        <option value="Pint">Pint</option>
+        <option value="Flute">Flute</option>
+        <option value="Nick and Nora Glass">Nick and Nora Glass</option>
+        <option value="Wine Glass">Wine Glass</option>
+    </select>
+    <br>
+<br>
 
 <label for="picture">Picture
    <input type="file" name="drinkIMG" accept="image/png, image/gif, image/jpeg">
@@ -95,17 +143,11 @@
 <br>
 <br>
 
-<label for="URL">Website to Purchase
-    <input type="text" name="URL">
+
+
+<label for="Created By">Created By
+    <input type="text" name="Created By">
 </label>
-<br>
-<br>
-
-<label for="price">Price
-    <input type="text" name="price">
-</label>
-
-
 <br>
 <br>
 

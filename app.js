@@ -71,7 +71,7 @@ app.use('/', require('./routes/index'));
 
 app.use('/', require('./routes/authroutes.js'));
 
-// app.use('/', require('./routes/drinkroutes.js'));
+app.use('/', require('./routes/drinkroutes.js'));
 
 app.use('/', require('./routes/ingredientsroutes.js'));
 

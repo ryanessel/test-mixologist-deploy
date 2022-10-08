@@ -5,12 +5,12 @@ const User = require("../models/User.model")
 const uploadSys = require('../config/cloudinary_ing.js');
 
 
-//--------INGREDIENT LIST
+//--------ROUTE TO DISPLAY INGREDIENT LIST
 router.get('/ingredientlist', (req, res, next) => {
     res.render('ingredients/ingredientlist');
 })
 
-//-------ROUTE TO CREATE INGREDIENTS
+//-------ROUTE TO DISPLAY CREATE INGREDIENTS
 router.get('/createIngredient', (req, res, next) => {
     res.render('ingredients/createingredient');
 })
@@ -45,11 +45,23 @@ router.post('/createingredient',uploadSys.single('ingIMG'), (req, res, next)=>{
     .catch(error => next(error));
 })
 
-//---------ROUTE TO INGREDIENT DETAILS
+//---------ROUTE TO DISPLAY INGREDIENT DETAILS
 router.get('/ingredientdetails', (req, res, next) => {
     res.render('ingredients/ingredientdetails');
 })
 
 
+//----- DELETE INGREDIENT ROUTE
 
+router.post('/ingredients/:id/delete', (req, res, next)=>{
+
+  Ingredient.findByIdAndRemove(req.params.id)
+  .then((response)=>{
+      res.redirect('/createingredient');
+  })
+  .catch((err)=>{
+      console.log(err);
+  })
+
+});
 module.exports = router;
