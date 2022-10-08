@@ -1,0 +1,23 @@
+<h2>Liquor Details</h2>
+<div>
+
+    <h4>Name: {{liquor.name}}</h4>
+    <h4>Brand: {{liquor.brand}}</h4>
+    <h4>Type: {{liquor.type}}</h4>
+    <h4>Flavored: {{liquor.flavored}}</h4>
+    <h4>Description: {{liquor.description}}</h4>
+    <h4>Picture: <img src="{{liquor.image}}" alt=""></h4>
+    <h4>Website to purchase: {{liquor.url}}</h4>
+    <h4>Price: {{liquor.price}}</h4>
+</div>
+
+{{#if theUser}}
+
+        <a class="edit" href="/liquors/{{liquor._id}}/edit">Edit</a>
+        
+        <form action="/liquors/{{liquor._id}}/delete" method="post">
+        
+        <button  class="delete" type="submit">Delete</button>
+        </form>
+
+{{/if}}

@@ -1,18 +1,22 @@
-{{#if theUser}}
 <h2>Drink Details</h2>
 <div>
-    <h3>{{drink.name}}</h3>
-    <h4>Name: {{drink.name}}</h4>
-    <h4>Type: {{drink.type}}</h4>
+    <h4>Cocktail Name: {{drink.name}}</h4>
+    <h4>Tools Needed: {{drink.tools}}</h4>
+    <h4>Ingredients: {{drink.ingredients}}</h4>
+    <h4>Liquors: {{drink.liquors}}</h4>
+    <h4>Glasswear: {{drink.glasswear}}</h4>
+    <h4>Instructions: {{drink.instructions}}</h4>
     <h4>Description: {{drink.description}}</h4>
     <h4>Picture: {{drink.picture}}</h4>
-    <h4>Website to purchase: {{drink.url}}</h4>
-    <h4>Price: {{drink.price}}</h4>
+    {{!-- <h4>Website to purchase: {{drink.url}}</h4>
+    <h4>Price: {{drink.price}}</h4> --}}
 </div>
 
-        <a class="edit" href="/drinks/{{this.id}}/edit">Edit</a>
+{{#if theUser}}
+        <a class="edit" href="/drinks/{{drink._id}}/edit">Edit</a>
         
-        <form action="/drinks/{{this.id}}/delete" method="post">
+        <form action="/drinks/{{drink._id}}/delete" method="post">
+        
         <button  class="delete" type="submit">Delete</button>
         </form>
 

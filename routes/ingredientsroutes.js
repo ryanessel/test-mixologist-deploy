@@ -11,7 +11,6 @@ router.get('/ingredientlist', (req, res, next) => {
     .then((result)=>{
         res.render('ingredients/ingredientlist',{ing: result});
     })
-
 })
 
 //-------ROUTE TO DISPLAY CREATE INGREDIENTS
@@ -64,13 +63,14 @@ router.get('/ingredientdetails/:id', (req, res, next) => {
 
 router.post('/ingredients/:id/delete', (req, res, next)=>{
 
-  Ingredient.findByIdAndRemove(req.params.id)
+  Ingredients.findByIdAndRemove(req.params.id)
   .then((response)=>{
-      res.redirect('/createingredient');
+      res.redirect('/ingredientlist');
   })
   .catch((err)=>{
       console.log(err);
   })
 
 });
+
 module.exports = router;

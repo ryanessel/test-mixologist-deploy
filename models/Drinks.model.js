@@ -18,8 +18,10 @@ const drinkSchema = new Schema({
         type: [],
     },
     likeCount: Number,
-    quantity: String,
+    //how to add a quantity to a specific liquor or mixer
+    // quantity: String,
     instructions: String,
+    description: String,
     image: String,
     url: String,
     price: Number,

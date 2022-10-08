@@ -1,12 +1,9 @@
-<h1>Drink Recipes</h1>
+<h1>Liquors</h1>
 <br>
 
-
 {{#if theUser}}
-<a href="/createdrink">Create Drink</a>
+<a href="/createliquor">Create Ingredient</a>
 {{/if}} 
-
-<br><br>
 
 <div class="tab">
     <button class="tablinks" onclick="openDrink(event, 'Vodka')">Vodka</button>
@@ -16,13 +13,12 @@
     <button class="tablinks" onclick="openDrink(event, 'Whiskey')">Whiskey</button>
     <button class="tablinks" onclick="openDrink(event, 'Brandy')">Brandy</button>
     <button class="tablinks" onclick="openDrink(event, 'Other')">Other</button>
-    <button class="tablinks" onclick="openDrink(event, 'Shots')">Shots</button>
-    <button class="tablinks" onclick="openDrink(event, 'Mocktails')">Mocktails</button>
 </div>
 
-{{#each drink}}
+{{#each liquor}}
   <div>
-    <p>Name: {{this.name}}</p>
-    <p><a href="/drinkdetails/{{this.id}}">Click Here for Details</a></p>
-  </div>
+    <p>Brand: {{this.brand}}</p>
+    <p>Type: {{this.type}}</p>
+    <p><a href="/liquordetails/{{this.id}}">Click Here for Details</a></p>
+ </div>
 {{/each}}

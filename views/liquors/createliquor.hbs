@@ -1,0 +1,61 @@
+<h2>Create Liquor</h2>
+<form action="/createLiquor" method="post" enctype="multipart/form-data">
+<div>Name
+    <input type="text" name="name">
+</div>
+
+<br><br>
+
+<div> Brand
+    <input type="text" name="brand">
+</div>
+
+<br><br>
+
+<label>Type</label> <select name="type" id="type">
+        <option value=""></option>
+        <option value="Vodka">Vodka</option>
+        <option value="Tequila">Tequila</option>
+        <option value="Gin">Gin</option>
+        <option value="Rum">Rum</option>
+        <option value="Whiskey">Whiskey</option>
+        <option value="Brandy">Brandy</option>
+        <option value="Other">Other</option>
+    </select>
+    <br>
+<br>
+
+<br><br>
+
+<div> Flavor
+    <input type="text" name="flavor">
+</div>
+
+<div> Description
+    <input type="text" name="description">
+</div>
+
+<br><br>
+
+<div> Website to Purchase
+    <input type="text" name="URL">
+</div>
+
+<br><br>
+
+<div>
+Price
+    <input type="text" name="price">
+</div>
+
+<br><br>
+
+<div>
+Picture
+   <input type="file" name="liquorIMG" accept="image/png, image/gif, image/jpeg">
+</div>
+
+<br><br>
+
+<button>Create</button>
+</form>

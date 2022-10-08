@@ -24,6 +24,14 @@ const userSchema = new Schema({
             }
         ]
     },
+    liquorsCreated: {
+        type: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "Liquor"
+            }
+        ]
+    },
     favoritedDrinks: {
         type: [
             {

@@ -75,6 +75,8 @@ app.use('/', require('./routes/drinkroutes.js'));
 
 app.use('/', require('./routes/ingredientsroutes.js'));
 
+app.use('/', require('./routes/liquorroutes.js'));
+
 // ===========================================
 
 app.use((req, res, next) => {

@@ -1,13 +1,14 @@
 <h2>Create Drink</h2>
 
 <form action="/createdrink" method="post" enctype="multipart/form-data">
+
 <label for="name">Cocktail Name
     <input type="text" name="name">
 </label>
 <br>
 <br>
 
-
+{{!-- 
 <label>Base Spirit</label> <select name="type" id="type">
         <option value=""></option>
         <option value="Vodka">Vodka</option>
@@ -26,6 +27,7 @@
         <option value="Plain Vodka">Plain Vodka</option>
         <option value="Flavored Vodka">Flavored Vodka</option>
         <option value="Infused Vodka">Infused Vodka</option>
+        <option value="Other">Other</option>
     </select>
     <br>
 <br>
@@ -37,6 +39,7 @@
         <option value="Blanco">Blanco</option>
         <option value="Reposado">Reposado</option>
         <option value="Infused Tequila">Infused Tequila</option>
+        <option value="Other">Other</option>
     </select>
     <br>
 <br>
@@ -53,6 +56,7 @@
         <option value="Irish Whiskey">Irish Whiskey</option>
         <option value="Canadian Whiskey">Canadian Whiskey</option>
         <option value="Tennessee Whiskey">Tennessee Whiskey</option>
+        <option value="Other">Other</option>
     </select>
     <br>
 <br>
@@ -62,6 +66,7 @@
         <option value="Spiced Rum">Spiced Rum</option>
         <option value="Aged Rum">Aged Rum</option>
         <option value="White Rum">White Rum</option>
+        <option value="Other">Other</option>
     </select>
     <br>
 <br>
@@ -74,6 +79,7 @@
         <option value="Old Tom Gin">Old Tom Gin</option>
         <option value="Genever">Genever</option>
         <option value="Infused Gin">Infused Gin</option>
+        <option value="Other">Other</option>
     </select>
     <br>
 <br>
@@ -90,6 +96,7 @@
         <option value="South African">South African</option>
         <option value="Cypriot">Cypriot</option>
         <option value="Pomace">Pomace</option>
+        <option value="Other">Other</option>
     </select>
     <br>
 <br>
@@ -107,14 +114,40 @@
         <option value="Berry">Berry</option>
         <option value="Cream">Cream</option>
         <option value="Honey">Honey</option>
+        <option value="Other">Other</option>
+    </select>
+    <br>
+<br> --}}
+
+<label>Tools Needed</label> <select name="tools" id="type">
+        <option value=""></option>
+        <option value="Shaker Tin">Shaker Tin</option>
+        <option value="Muddler">Muddler</option>
+        <option value="Bar Spoon">Bar Spoon</option>
+        <option value="Jigger">Jigger</option>
+        <option value="Strainer">Strainer</option>
+        <option value="Mesh Strainer">Mesh Strainer</option>
+        <option value="Other">Other</option>
     </select>
     <br>
 <br>
 
-<label for="Build">Build
-    <input type="text" name="Build">
-</label>
+<label>Ingredients</label> <select name="ingredients" id="type" select="multiple">
+    <option value=""></option>
+    {{#each ing}}
+        <option value ="{{this.name}}">{{this.name}}</option>
+    {{/each}}
+    </select>
+    <br>
 <br>
+
+<label>Liquors</label> <select name="liquors" id="type" select="multiple">
+    <option value=""></option>
+    {{#each liquor}}
+        <option value ="{{this.name}}">{{this.name}}</option>
+    {{/each}}
+    </select>
+    <br>
 <br>
 
 <label>Glasswear</label> <select name="type" id="type">
@@ -133,8 +166,22 @@
         <option value="Flute">Flute</option>
         <option value="Nick and Nora Glass">Nick and Nora Glass</option>
         <option value="Wine Glass">Wine Glass</option>
+        <option value="Other">Other</option>
     </select>
     <br>
+<br>
+
+<label for="Instructions">Instructions
+    <input type="text" name="Instructions">
+</label>
+<br>
+<br>
+
+
+<label for="Description">Description
+    <input type="text" name="Description">
+</label>
+<br>
 <br>
 
 <label for="picture">Picture
@@ -143,13 +190,6 @@
 <br>
 <br>
 
-
-
-<label for="Created By">Created By
-    <input type="text" name="Created By">
-</label>
-<br>
-<br>
 
 <button>Create</button>
 </form>
