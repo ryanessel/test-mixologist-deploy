@@ -24,7 +24,7 @@ router.get('/createLiquor', (req, res, next) => {
     res.render('liquors/createliquor');
 })
 
-router.post('/createliquor',uploadSys.single('LiquorIMG'), (req, res, next)=>{
+router.post('/createliquor',uploadSys.single('liquorIMG'), (req, res, next)=>{
 
     let img
     if(typeof req.file == 'undefined'){
@@ -37,18 +37,17 @@ router.post('/createliquor',uploadSys.single('LiquorIMG'), (req, res, next)=>{
             name: req.body.name
             ,brand: req.body.brand
             ,type: req.body.type
-            ,flavored: req.body.flavored
+            ,flavor: req.body.flavor
             ,description: req.body.description
             ,url: req.body.url
             ,price: req.body.price
             ,image: img
         }).then((createdLiquor) => {
-            console.log({createdLiquor})
+            //console.log({createdLiquor})
             User.findByIdAndUpdate(req.session.currentlyLoggedIn._id,{$push: {liquorsCreated: createdLiquor._id}}, {new: true})
             .then((updatedUser) => {
                 req.session.currentlyLoggedIn = updatedUser;
-
-                console.log({seshUserIng: req.session.currentlyLoggedIn.liquorsCreated, updatedUser});
+                //console.log({seshUserIng: req.session.currentlyLoggedIn.liquorsCreated, updatedUser});
                 res.redirect(`/liquordetails/${createdLiquor._id}`)
             }).catch((err) => console.log(err))
 

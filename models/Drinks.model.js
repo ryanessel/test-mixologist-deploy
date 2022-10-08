@@ -11,7 +11,15 @@ const drinkSchema = new Schema({
             }
         ]
     },
-    glassware: {
+    liquors: {
+        type: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "Liquor"
+            }
+        ]
+    },
+    glasswear: {
         type: [],
     },
     tools: {
@@ -25,7 +33,7 @@ const drinkSchema = new Schema({
     image: String,
     url: String,
     price: Number,
-    tags: [],
+    tags: String,
     }, {
         timestamps: true
     });

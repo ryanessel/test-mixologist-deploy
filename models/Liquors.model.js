@@ -5,7 +5,7 @@ const liquorsSchema = new Schema({
     name: String,
     brand: String,
     type: String,
-    flavored: String,
+    flavor: String,
     description: String,
     image: String,
     url: String,

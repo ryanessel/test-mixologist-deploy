@@ -1,13 +1,13 @@
 <h2>Drink Details</h2>
 <div>
     <h4>Cocktail Name: {{drink.name}}</h4>
+    <h4>Picture: <img src="{{drink.image}}" alt=""></h4>
     <h4>Tools Needed: {{drink.tools}}</h4>
-    <h4>Ingredients: {{drink.ingredients}}</h4>
-    <h4>Liquors: {{drink.liquors}}</h4>
+    <h4>Ingredients: {{#each drink.ingredients}}{{this.name}}, {{/each}}</h4>
+    <h4>Liquors: {{#each drink.liquors}}{{this.name}}, {{/each}}</h4>
     <h4>Glasswear: {{drink.glasswear}}</h4>
     <h4>Instructions: {{drink.instructions}}</h4>
     <h4>Description: {{drink.description}}</h4>
-    <h4>Picture: {{drink.picture}}</h4>
     {{!-- <h4>Website to purchase: {{drink.url}}</h4>
     <h4>Price: {{drink.price}}</h4> --}}
 </div>

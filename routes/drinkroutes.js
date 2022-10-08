@@ -26,7 +26,7 @@ router.get('/createdrink', (req, res, next) => {
     }).catch(error => next(error));
 })
 
-router.post('/createdrink',uploadSys.single('DrinkIMG'), (req, res, next)=>{
+router.post('/createdrink',uploadSys.single('drinkIMG'), (req, res, next)=>{
 
     let img
     if(typeof req.file == 'undefined'){
@@ -37,36 +37,36 @@ router.post('/createdrink',uploadSys.single('DrinkIMG'), (req, res, next)=>{
 
     Drinks.create({
             name: req.body.name
-            // ,tools: req.body.tools
-            // ,ingredients: req.body.ingredients
-            // ,liquors: req.body.liquors
-            // ,glasswear: req.body.glasswear
             ,instructions: req.body.instructions
             // ,quantity: req.body.quantity
             ,description: req.body.description
-            // ,url: req.body.url
+            ,url: req.body.url
             // ,price: req.body.price
             ,image: img
-            // ,tags:
+            ,tags: req.body.tags
         }).then((createdDrink) => {
-            console.log({createdDrink})
-            User.findByIdAndUpdate(req.session.currentlyLoggedIn._id,{$push: {drinksCreated: createdDrink._id}}, {new: true})
-            .then((updatedUser) => {
-                req.session.currentlyLoggedIn = updatedUser;
-
-                console.log({seshUserIng: req.session.currentlyLoggedIn.drinksCreated, updatedUser});
-                res.redirect(`/drinkdetails/${createdDrink._id}`)
-            }).catch((err) => console.log(err))
-
+            Drinks.findByIdAndUpdate(createdDrink._id, {
+                $push: {tools: req.body.tools,
+                        glasswear: req.body.glasswear,
+                        ingredients: req.body.ingredients,
+                        liquors: req.body.liquors}
+            }).then(() => {
+                User.findByIdAndUpdate(req.session.currentlyLoggedIn._id,{$push: {drinksCreated: createdDrink._id}}, {new: true})
+                .then((updatedUser) => {
+                    req.session.currentlyLoggedIn = updatedUser;
+    
+                    console.log({seshUserIng: req.session.currentlyLoggedIn.drinksCreated, updatedUser});
+                    res.redirect(`/drinkdetails/${createdDrink._id}`)
+                })
+            })
+         }).catch(error => next(error));
     })
-    .catch(error => next(error));
-})
 
 
 
 //---------ROUTE TO DISPLAY DRINK DETAILS
 router.get('/drinkdetails/:drinkId', (req, res, next) => {
-    Drinks.findById(req.params.drinkId)
+    Drinks.findById(req.params.drinkId).populate(["ingredients","liquors"])
     .then((drink)=>{
         res.render('drinks/drinkdetails', {drink: drink});
     }).catch((err)=>{

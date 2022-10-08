@@ -1,0 +1,110 @@
+{{!-- 
+<label>Base Spirit</label> <select name="type" id="type">
+        <option value=""></option>
+        <option value="Vodka">Vodka</option>
+        <option value="Tequila">Tequila</option>
+        <option value="Gin">Gin</option>
+        <option value="Rum">Rum</option>
+        <option value="Whiskey">Whiskey</option>
+        <option value="Brandy">Brandy</option>
+        <option value="Other">Other</option>
+    </select>
+    <br>
+<br>
+
+<label>Vodka</label> <select name="type" id="type">
+        <option value=""></option>
+        <option value="Plain Vodka">Plain Vodka</option>
+        <option value="Flavored Vodka">Flavored Vodka</option>
+        <option value="Infused Vodka">Infused Vodka</option>
+        <option value="Other">Other</option>
+    </select>
+    <br>
+<br>
+
+<label>Tequila</label> <select name="type" id="type">
+        <option value=""></option>
+        <option value="Anejo">Anejo</option>
+        <option value="Mezcal">Mezcal</option>
+        <option value="Blanco">Blanco</option>
+        <option value="Reposado">Reposado</option>
+        <option value="Infused Tequila">Infused Tequila</option>
+        <option value="Other">Other</option>
+    </select>
+    <br>
+<br>
+
+<label>Whiskey</label> <select name="type" id="type">
+        <option value=""></option>
+        <option value="Bourbon">Bourbon</option>
+        <option value="Single Malt Scotch">Single Malt Scotch</option>
+        <option value="Blended Malt Scotch">Blended Malt Scotch</option>
+        <option value="Single Grain Scotch">Single Grain Scotch</option>
+        <option value="Blended Grain Scotch">Blended Grain Scotch</option>
+        <option value="Rye">Rye</option>
+        <option value="Japanese Whiskey">Japanese Whiskey</option>
+        <option value="Irish Whiskey">Irish Whiskey</option>
+        <option value="Canadian Whiskey">Canadian Whiskey</option>
+        <option value="Tennessee Whiskey">Tennessee Whiskey</option>
+        <option value="Other">Other</option>
+    </select>
+    <br>
+<br>
+
+<label>Rum</label> <select name="type" id="type">
+        <option value=""></option>
+        <option value="Spiced Rum">Spiced Rum</option>
+        <option value="Aged Rum">Aged Rum</option>
+        <option value="White Rum">White Rum</option>
+        <option value="Other">Other</option>
+    </select>
+    <br>
+<br>
+
+
+<label>Gin</label> <select name="type" id="type">
+        <option value=""></option>
+        <option value="London Dry Gin">London Dry Gin</option>
+        <option value="Plymouth Gin">Plymouth Gin</option>
+        <option value="Old Tom Gin">Old Tom Gin</option>
+        <option value="Genever">Genever</option>
+        <option value="Infused Gin">Infused Gin</option>
+        <option value="Other">Other</option>
+    </select>
+    <br>
+<br>
+
+<label>Brandy</label> <select name="type" id="type">
+        <option value=""></option>
+        <option value="Spiced Rum">Cognac</option>
+        <option value="Aged Rum">Armagnac</option>
+        <option value="White Rum">Calvados</option>
+        <option value="Brandy de Jerez">Brandy de Jerez</option>
+        <option value="Obstler">Obstler</option>
+        <option value="Pisco">Pisco</option>
+        <option value="Armenian">Armenian</option>
+        <option value="South African">South African</option>
+        <option value="Cypriot">Cypriot</option>
+        <option value="Pomace">Pomace</option>
+        <option value="Other">Other</option>
+    </select>
+    <br>
+<br>
+
+<label>Cordial</label> <select name="type" id="type">
+        <option value=""></option>
+        <option value="Chocolate">Chocolate</option>
+        <option value="Crème">Crème</option>
+        <option value="Coffee">Coffee</option>
+        <option value="Herbal">Herbal</option>
+        <option value="Floral">Floral</option>
+        <option value="Nutty">Nutty</option>
+        <option value="Citrus">Citrus</option>
+        <option value="Fruity">Fruity</option>
+        <option value="Berry">Berry</option>
+        <option value="Cream">Cream</option>
+        <option value="Honey">Honey</option>
+        <option value="Other">Other</option>
+    </select>
+    <br>
+<br> --}}
