@@ -21,6 +21,7 @@ router.post('/signup', (req, res, next)=>{
       console.log(`Password hash: ${hashedPassword}`);
       User.create({
         username: req.body.username,
+        email: req.body.email.toLowerCase(),
         password: hashedPassword,
         active: true
     })
@@ -45,29 +46,40 @@ router.get('/login', (req, res, next)=>{
       return;
     }
    
+    let loginParam
+
     User.findOne({ username: req.body.username })
       .then(resultFromDB => {
-        if (!resultFromDB) {
-          req.flash('error', 'could not find that username')
-          res.redirect('/login');
-          return;
-        }
-        else if (resultFromDB.active === false){
-          req.flash('error', 'User is inactive, please contact support')
-          res.redirect('/login')
-        }
-        else if (bcryptjs.compareSync(req.body.password, resultFromDB.password)) {
-          // console.log("found user", resultFromDB);
-          req.session.currentlyLoggedIn = resultFromDB;
-          // console.log(req.session);
-          req.flash('success', 'Successfully Logged In as ' + resultFromDB.username);
-          res.redirect('/profile');
-          return;
-        } else {
-          req.flash('error', 'this username/password combination could not be authenticated. please try again');
-          res.redirect('/login');
-        }
-      })
+          User.findOne({email: req.body.username.toLowerCase()})
+            .then(resultEmail => {
+
+              if(resultFromDB !== null){
+                loginParam = resultFromDB
+              } else if (resultEmail !== null){
+                loginParam = resultEmail
+              } else {
+                req.flash('error', 'could not find that username')
+                res.redirect('/login');
+                return;
+              }
+              
+               if (loginParam.active === false){
+                req.flash('error', 'User is inactive, please contact support')
+                res.redirect('/login')
+                return;
+              }
+              else if (bcryptjs.compareSync(req.body.password, loginParam.password)) {
+                req.session.currentlyLoggedIn = loginParam;
+                req.flash('success', 'Successfully Logged In as ' + loginParam.username);
+                res.redirect('/profile');
+                return;
+              } else {
+                req.flash('error', 'this username/password combination could not be authenticated. please try again');
+                res.redirect('/login');
+              }
+              
+            })
+        })
       .catch(error => console.log(error));
   });
 

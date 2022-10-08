@@ -7,7 +7,11 @@ const uploadSys = require('../config/cloudinary_ing.js');
 
 //--------ROUTE TO DISPLAY INGREDIENT LIST
 router.get('/ingredientlist', (req, res, next) => {
-    res.render('ingredients/ingredientlist');
+    Ingredients.find()
+    .then((result)=>{
+        res.render('ingredients/ingredientlist',{ing: result});
+    })
+
 })
 
 //-------ROUTE TO DISPLAY CREATE INGREDIENTS
@@ -46,8 +50,13 @@ router.post('/createingredient',uploadSys.single('ingIMG'), (req, res, next)=>{
 })
 
 //---------ROUTE TO DISPLAY INGREDIENT DETAILS
-router.get('/ingredientdetails', (req, res, next) => {
-    res.render('ingredients/ingredientdetails');
+router.get('/ingredientdetails/:id', (req, res, next) => {
+    Ingredients.findById(req.params.id)
+    .then((ing) => {
+        res.render('ingredients/ingredientdetails',{ingredient: ing});
+    }).catch((err)=>{
+        console.log(err);
+    })
 })
 
 

@@ -1,6 +1,13 @@
 <h1>Drinks</h1>
 <br>
 
+
+{{#if theUser}}
+<a href="/createdrink">Create Drink</a>
+{{/if}} 
+
+<br><br>
+
 <div class="tab">
     <button class="tablinks" onclick="openDrink(event, 'Vodka')">Vodka</button>
     <button class="tablinks" onclick="openDrink(event, 'Tequila')">Tequila</button>
@@ -12,7 +19,3 @@
     <button class="tablinks" onclick="openDrink(event, 'Shots')">Shots</button>
     <button class="tablinks" onclick="openDrink(event, 'Mocktails')">Mocktails</button>
 </div>
-
-{{#if theUser}}
-<a href="/createdrink">Create Drink</a>
-{{/if}} 
