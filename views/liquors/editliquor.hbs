@@ -6,8 +6,12 @@
 <label for ="name">Name</label>
     <input type:"text" name="name" value="{{liquor.name}}">
 
+<br><br>
+
 <label for ="brand">Brand</label>    
      <input type:"text" name="brand" value="{{liquor.brand}}">
+
+<br><br>
 
 <label for="type">Type</label>
 <select name="type" id="type" select= multiple >
@@ -16,25 +20,34 @@
         {{/each}}
 </select>
 
+<br><br>
+
 <label for ="flavor">Flavor</label>
     <input type:"text" name="flavor" value="{{liquor.flavor}}">
+
+<br><br>
 
 <label for ="description">Description</label>    
      <input type:"text" name="description" value="{{liquor.description}}">
 
+<br><br>
+
 <label for ="url">Website to Purchase</label>
     <input type:"text" name="url" value="{{liquor.url}}">
+
+<br><br>
 
 <label for ="price">Price</label>
     <input type:"text" name="price" value="{{liquor.price}}">
 
+<br><br>
 
-{{!-- <div>
+<div>
 Picture
-   <input type="file" name="ingIMG" accept="image/png, image/gif, image/jpeg">
+   <input type="file" name="liquorIMG" accept="image/png, image/gif, image/jpeg">
 </div>
 
-<br><br> --}}
+<br><br>
 
 <button type ="submit">Edit</button>
 </form>

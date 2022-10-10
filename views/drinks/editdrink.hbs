@@ -6,12 +6,16 @@
 <label for ="name">Cocktail Name</label>
     <input type:"text" name="name" value="{{drink.name}}">
 
+<br><br>
+
 <label for="tools">Tools Needed</label>
 <select name="tools" id="tools" select= multiple >
         {{#each drinks}}]
         <option value="{{this._id}}">{{this.type}}</option>
         {{/each}}
 </select>
+
+<br><br>
 
 <label>Ingredients</label> <select name="ingredients" id="ingredients" select="multiple">
     <option value=""></option>
@@ -38,18 +42,35 @@
         {{/each}}
 </select>
 
+<br><br>
+
 <label for ="instructions">Instructions</label>    
      <input type:"text" name="instructions" value="{{drink.instructions}}">
+
+<br><br>
 
 <label for ="description">Description</label>    
 <input type:"text" name="description" value="{{drink.description}}">
 
+<br><br>
+
 <label for ="url">Original Website (optional)</label>
     <input type:"text" name="url" value="{{drink.url}}">
+
+<br><br>
+
+<div>
+Picture
+   <input type="file" name="drinkIMG" accept="image/png, image/gif, image/jpeg">
+</label>
+</div>
+
+<br><br>
 
 <label for ="tags">Tags</label>
     <input type:"text" name="tags" value="{{drink.tags}}">
 
+<br><br>
 
 <button type ="submit">Edit</button>
 </form>
