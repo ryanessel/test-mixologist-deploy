@@ -80,4 +80,34 @@ router.post('/liquors/:id/delete', (req, res, next)=>{
   
   });
 
+   //----------------------------- EDIT LIQUOR ROUTE
+ router.get('/liquors/:id/edit', (req, res, next) => {
+    Liquors.findById(req.params.id)
+    .then(liquorsFromDb => {
+        console.log(liquorsFromDb);
+        res.render('liquors/editliquor', liquorsFromDb);
+}).catch(err => {console.log({err})});
+})
+
+router.post('/liquors/:id/edit', (req, res, next)=>{
+    Liquors.findByIdAndUpdate(req.params.id, {
+        name: req.body.name
+            ,brand: req.body.brand
+            ,type: req.body.type
+            ,flavor: req.body.flavor
+            ,description: req.body.description
+            ,url: req.body.url
+            ,price: req.body.price
+            ,image: img
+        
+    }).then((response)=>{
+        
+        res.redirect('/createliquor');
+
+    }).catch((err)=>{
+        console.log(err);
+    })
+
+});
+
 module.exports = router;

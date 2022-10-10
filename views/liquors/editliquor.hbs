@@ -1,0 +1,41 @@
+<h2>Edit Liquor</h2>
+
+<div>
+<form action="/liquors/{{liquor.id}}" method="post">
+
+<label for ="name">Name</label>
+    <input type:"text" name="name" value="{{liquor.name}}">
+
+<label for ="brand">Brand</label>    
+     <input type:"text" name="brand" value="{{liquor.brand}}">
+
+<label for="type">Type</label>
+<select name="type" id="type" select= multiple >
+        {{#each liquors}}]
+        <option value="{{this._id}}">{{this.type}}</option>
+        {{/each}}
+</select>
+
+<label for ="flavor">Flavor</label>
+    <input type:"text" name="flavor" value="{{liquor.flavor}}">
+
+<label for ="description">Description</label>    
+     <input type:"text" name="description" value="{{liquor.description}}">
+
+<label for ="url">Website to Purchase</label>
+    <input type:"text" name="url" value="{{liquor.url}}">
+
+<label for ="price">Price</label>
+    <input type:"text" name="price" value="{{liquor.price}}">
+
+
+{{!-- <div>
+Picture
+   <input type="file" name="ingIMG" accept="image/png, image/gif, image/jpeg">
+</div>
+
+<br><br> --}}
+
+<button type ="submit">Edit</button>
+</form>
+</div>

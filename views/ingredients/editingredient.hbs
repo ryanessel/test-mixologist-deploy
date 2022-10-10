@@ -1,0 +1,39 @@
+<h2>Edit Ingreident</h2>
+
+<div>
+<form action="/ingredients/{{ingredient.id}}" method="post">
+
+<label for ="name">Name</label>
+    <input type:"text" name="name" value="{{ingredient.name}}">
+
+<label for="type">Type</label>
+<select name="type" id="type" select= multiple >
+        {{#each ingredients}}]
+        <option value="{{this._id}}">{{this.type}}</option>
+        {{/each}}
+</select>
+
+<label for ="description">Description</label>    
+     <input type:"text" name="description" value="{{ingredient.description}}">
+
+<label for ="url">Website to Purchase</label>
+    <input type:"text" name="url" value="{{ingredient.url}}">
+
+<label for ="price">Price</label>
+    <input type:"text" name="price" value="{{ingredient.price}}">
+
+<label for ="url">Website to Purchase</label>
+    <input type:"text" name="url" value="{{ingredient.url}}">
+
+
+
+{{!-- <div>
+Picture
+   <input type="file" name="ingIMG" accept="image/png, image/gif, image/jpeg">
+</div>
+
+<br><br> --}}
+
+<button type ="submit">Edit</button>
+</form>
+</div>

@@ -73,4 +73,32 @@ router.post('/ingredients/:id/delete', (req, res, next)=>{
 
 });
 
+ //----------------------------- EDIT INGREDIENTS ROUTE
+ router.get('/ingredients/:id/edit', (req, res, next) => {
+    Ingredients.findById(req.params.id)
+    .then(ingredientsFromDb => {
+        console.log(ingredientsFromDb);
+        res.render('ingredients/editingredient', ingredientsFromDb);
+}).catch(err => {console.log({err})});
+})
+
+router.post('/ingredients/:id/edit', (req, res, next)=>{
+    Ingredients.findByIdAndUpdate(req.params.id, {
+        name: req.body.name
+        ,type: req.body.type
+        ,description: req.body.description
+        ,url: req.body.url
+        ,price: req.body.price
+        ,image: img
+        
+    }).then((response)=>{
+        
+        res.redirect('/createingredient');
+
+    }).catch((err)=>{
+        console.log(err);
+    })
+
+});
+
 module.exports = router;
