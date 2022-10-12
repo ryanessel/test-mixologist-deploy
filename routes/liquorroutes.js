@@ -89,25 +89,39 @@ router.post('/liquors/:id/delete', (req, res, next)=>{
 }).catch(err => {console.log({err})});
 })
 
-router.post('/liquors/:id/edit', (req, res, next)=>{
-    Liquors.findByIdAndUpdate(req.params.id, {
-        name: req.body.name
-            ,brand: req.body.brand
-            ,type: req.body.type
-            ,flavor: req.body.flavor
-            ,description: req.body.description
-            ,url: req.body.url
-            ,price: req.body.price
-            ,image: img
-        
-    }).then((response)=>{
-        
-        res.redirect('/createliquor');
+router.post('/liquors/:id/edit',uploadSys.single('liquorIMG'), (req, res, next)=>{
+
+    Liquors.findById(req.params.id)
+    .then((result)=>{
+        let img
+        if(typeof req.file == 'undefined'){
+            img = result.image
+        } else {
+           img = req.file.path
+        };
+
+        Liquors.findByIdAndUpdate(req.params.id, {
+            name: req.body.name
+                ,brand: req.body.brand
+                ,type: req.body.type
+                ,flavor: req.body.flavor
+                ,description: req.body.description
+                ,url: req.body.url
+                ,price: req.body.price
+                ,image: img
+            
+            }).then(()=>{
+                res.redirect(`/liquordetails/${req.params.id}`);
+        })
 
     }).catch((err)=>{
         console.log(err);
     })
 
 });
+
+router.get('/liquordetails/:id/cancel', (req,res,next) => {
+    res.redirect(`/liquordetails/${req.params.id}`);
+})
 
 module.exports = router;

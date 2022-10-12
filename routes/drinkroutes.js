@@ -44,19 +44,27 @@ router.post('/createdrink',uploadSys.single('drinkIMG'), (req, res, next)=>{
             // ,price: req.body.price
             ,image: img
             ,tags: req.body.tags
+            ,likeCount: 0 
         }).then((createdDrink) => {
             Drinks.findByIdAndUpdate(createdDrink._id, {
                 $push: {tools: req.body.tools,
-                        glasswear: req.body.glasswear,
-                        ingredients: req.body.ingredients,
-                        liquors: req.body.liquors}
-            }).then(() => {
-                User.findByIdAndUpdate(req.session.currentlyLoggedIn._id,{$push: {drinksCreated: createdDrink._id}}, {new: true})
-                .then((updatedUser) => {
-                    req.session.currentlyLoggedIn = updatedUser;
-    
-                    console.log({seshUserIng: req.session.currentlyLoggedIn.drinksCreated, updatedUser});
-                    res.redirect(`/drinkdetails/${createdDrink._id}`)
+                        glasswear: req.body.glasswear}
+                }).then(() =>{
+                    Drinks.findByIdAndUpdate(createdDrink._id, {
+                        $push: {ingredients: {ingredientObject: req.body[`ingObj`], quantity:0}}
+                        }).then(() => {
+                            Drinks.findByIdAndUpdate(createdDrink._id, {
+                                $push: {liquors: {liquorsObject: req.body.liqObj, quantity: 0}}
+                                
+                        }).then(() => {
+                        User.findByIdAndUpdate(req.session.currentlyLoggedIn._id,{$push: {drinksCreated: createdDrink._id}}, {new: true})
+                        .then((updatedUser) => {
+                            req.session.currentlyLoggedIn = updatedUser;
+            
+                            console.log({seshUserIng: req.session.currentlyLoggedIn.drinksCreated, updatedUser});
+                            res.redirect(`/drinkdetails/${createdDrink._id}`)
+                        })
+                    })
                 })
             })
          }).catch(error => next(error));

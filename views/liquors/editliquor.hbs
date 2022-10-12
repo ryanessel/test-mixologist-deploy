@@ -1,44 +1,49 @@
 <h2>Edit Liquor</h2>
 
-<div>
-<form action="/liquors/{{liquor.id}}" method="post">
+<form action="/liquors/{{id}}/edit" method="post" enctype="multipart/form-data">
 
 <label for ="name">Name</label>
-    <input type:"text" name="name" value="{{liquor.name}}">
+    <input type:"text" name="name" value="{{name}}">
 
 <br><br>
 
 <label for ="brand">Brand</label>    
-     <input type:"text" name="brand" value="{{liquor.brand}}">
+     <input type:"text" name="brand" value="{{brand}}">
 
 <br><br>
 
 <label for="type">Type</label>
-<select name="type" id="type" select= multiple >
-        {{#each liquors}}]
-        <option value="{{this._id}}">{{this.type}}</option>
-        {{/each}}
+<select name="type" id="type">
+        <option value="{{type}}" selected disabled hidden>{{type}}</option>
+        <option value="Vodka">Vodka</option>
+        <option value="Tequila">Tequila</option>
+        <option value="Gin">Gin</option>
+        <option value="Rum">Rum</option>
+        <option value="Whiskey">Whiskey</option>
+        <option value="Brandy">Brandy</option>
+        <option value="Other">Other</option>
+    </select>
 </select>
 
 <br><br>
 
 <label for ="flavor">Flavor</label>
-    <input type:"text" name="flavor" value="{{liquor.flavor}}">
+    <input type:"text" name="flavor" value="{{flavor}}">
 
 <br><br>
 
 <label for ="description">Description</label>    
-     <input type:"text" name="description" value="{{liquor.description}}">
+     <input type:"text" name="description" value="{{description}}">
 
 <br><br>
 
 <label for ="url">Website to Purchase</label>
-    <input type:"text" name="url" value="{{liquor.url}}">
+    <input type:"text" name="url" value="{{url}}">
 
 <br><br>
 
 <label for ="price">Price</label>
-    <input type:"text" name="price" value="{{liquor.price}}">
+    <input type:"text" name="price" value="{{price}}">
 
 <br><br>
 
@@ -49,6 +54,9 @@ Picture
 
 <br><br>
 
-<button type ="submit">Edit</button>
+<button type ="submit">Submit Changes</button>
 </form>
-</div>
+
+<form action="/liquordetails/{{id}}/cancel" method="get">
+<button type="submit">Cancel</button>
+</form>

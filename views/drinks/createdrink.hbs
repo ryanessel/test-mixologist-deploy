@@ -9,7 +9,7 @@
 <br>
 
 <label>Tools Needed</label> <select name="tools" id="tools">
-        <option value=""></option>
+        <option value="" selected disabled hidden>Select an Option</option>
         <option value="Shaker Tin">Shaker Tin</option>
         <option value="Muddler">Muddler</option>
         <option value="Bar Spoon">Bar Spoon</option>
@@ -21,7 +21,7 @@
     <br>
 <br>
 
-<label>Ingredients</label> <select name="ingredients" id="ingredients" select="multiple">
+<label>Ingredients</label> <select name="ingObj" id="ingObj" multiple>
     <option value=""></option>
     {{#each ing}}
         <option value ="{{this._id}}">{{this.name}}</option>
@@ -30,7 +30,7 @@
     <br>
 <br>
 
-<label>Liquors</label> <select name="liquors" id="liquors" select="multiple">
+<label>Liquors</label> <select name="liqObj" id="liqObj" multiple>
     <option value=""></option>
     {{#each liquor}}
         <option value ="{{this._id}}">{{this.name}}</option>

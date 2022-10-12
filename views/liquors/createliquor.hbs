@@ -1,19 +1,21 @@
 <h2>Create Liquor</h2>
 <form action="/createLiquor" method="post" enctype="multipart/form-data">
+
+
 <div>Name
     <input type="text" name="name">
 </div>
 
 <br><br>
 
-<div> Brand
+<div>Brand
     <input type="text" name="brand">
 </div>
 
 <br><br>
 
 <label>Type</label> <select name="type" id="type">
-        <option value=""></option>
+        <option value="" selected disabled hidden>Select an Option</option>
         <option value="Vodka">Vodka</option>
         <option value="Tequila">Tequila</option>
         <option value="Gin">Gin</option>

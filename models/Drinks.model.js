@@ -3,22 +3,27 @@ const {Schema, model} = mongoose;
 
 const drinkSchema = new Schema({
     name: String,
-    ingredients: {
-        type: [
-            {
+    ingredients:
+         [{
+            ingredientObject:{
                 type: Schema.Types.ObjectId,
                 ref: "Ingredient"
+            },
+            quantity:{
+                type: String
             }
-        ]
-    },
-    liquors: {
-        type: [
-            {
+          }],
+
+    liquors:
+        [{ 
+            liquorsObject:{
                 type: Schema.Types.ObjectId,
                 ref: "Liquor"
-            }
-        ]
-    },
+        }, 
+        quantity:{
+            type: Number
+        }
+        }],
     glasswear: {
         type: [],
     },
@@ -26,8 +31,6 @@ const drinkSchema = new Schema({
         type: [],
     },
     likeCount: Number,
-    //how to add a quantity to a specific liquor or mixer
-    // quantity: String,
     instructions: String,
     description: String,
     image: String,

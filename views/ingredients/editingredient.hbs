@@ -1,34 +1,41 @@
 <h2>Edit Ingreident</h2>
 
-<div>
-<form action="/ingredients/{{ingredient.id}}" method="post">
+<form action="/ingredients/{{id}}/edit" method="post" enctype="multipart/form-data">
 
 <label for ="name">Name</label>
-    <input type:"text" name="name" value="{{ingredient.name}}">
+    <input type:"text" name="name" value="{{name}}">
 
 <br><br>
 
 <label for="type">Type</label>
-<select name="type" id="type" select= multiple >
-        {{#each ingredients}}]
-        <option value="{{this._id}}">{{this.type}}</option>
-        {{/each}}
+<select name="type" id="type">
+        <option value="{{type}}" selected disabled hidden>{{type}}</option>
+        <option value="Syrup">Syrup</option>
+        <option value="Fruit">Fruit</option>
+        <option value="Carbonated mixers">Carbonated mixers</option>
+        <option value="Juice">Juice</option>
+        <option value="Bitters">Bitters</option>
+        <option value="Garnish">Garnish</option>
+        <option value="Dairy">Dairy</option>
+        <option value="Caffeinated beverages">Caffeinated beverages</option>
+        <option value="Sauces">Sauces</option>
+        <option value="Prepared mixes">Prepared mixes</option>
 </select>
 
 <br><br>
 
 <label for ="description">Description</label>    
-     <input type:"text" name="description" value="{{ingredient.description}}">
+     <input type:"text" name="description" value="{{description}}">
 
 <br><br>
 
 <label for ="url">Website to Purchase</label>
-    <input type:"text" name="url" value="{{ingredient.url}}">
+    <input type:"text" name="url" value="{{url}}">
 
 <br><br>
 
 <label for ="price">Price</label>
-    <input type:"text" name="price" value="{{ingredient.price}}">
+    <input type:"text" name="price" value="{{price}}">
 
 <br><br>
 
@@ -39,6 +46,9 @@ Picture
 
 <br><br>
 
-<button type ="submit">Edit</button>
+<button type ="submit">Submit Changes</button>
 </form>
-</div>
+
+<form action="/ingredients/{{id}}/cancel" method="get">
+<button type="submit">Cancel</button>
+</form>

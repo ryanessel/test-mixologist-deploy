@@ -76,29 +76,43 @@ router.post('/ingredients/:id/delete', (req, res, next)=>{
  //----------------------------- EDIT INGREDIENTS ROUTE
  router.get('/ingredients/:id/edit', (req, res, next) => {
     Ingredients.findById(req.params.id)
-    .then(ingredientsFromDb => {
-        console.log(ingredientsFromDb);
-        res.render('ingredients/editingredient', ingredientsFromDb);
+    .then((ingResult) => {
+        res.render('ingredients/editingredient', ingResult);
 }).catch(err => {console.log({err})});
 })
 
-router.post('/ingredients/:id/edit', (req, res, next)=>{
-    Ingredients.findByIdAndUpdate(req.params.id, {
-        name: req.body.name
-        ,type: req.body.type
-        ,description: req.body.description
-        ,url: req.body.url
-        ,price: req.body.price
-        ,image: img
-        
-    }).then((response)=>{
-        
-        res.redirect('/createingredient');
+router.post('/ingredients/:id/edit', uploadSys.single('ingIMG'), (req, res, next)=>{
+
+    Ingredients.findById(req.params.id)
+    .then((result)=>{
+        let img
+        if(typeof req.file == 'undefined'){
+            img = result.image
+        } else {
+           img = req.file.path
+        };
+    
+        Ingredients.findByIdAndUpdate(req.params.id, {
+            name: req.body.name
+            ,type: req.body.type
+            ,description: req.body.description
+            ,url: req.body.url
+            ,price: req.body.price
+            ,image: img
+            
+            }).then(()=>{
+                
+                res.redirect(`/ingredientdetails/${req.params.id}`);
+        })
 
     }).catch((err)=>{
         console.log(err);
     })
 
 });
+
+router.get('/ingredients/:id/cancel', (req,res,next) => {
+    res.redirect(`/ingredientdetails/${req.params.id}`)
+})
 
 module.exports = router;
