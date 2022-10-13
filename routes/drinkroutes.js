@@ -125,6 +125,12 @@ router.post('/drinks/:id/edit', (req, res, next)=>{
     })
 
 });
+
+//----------------------------- CANCEL DRINKS ROUTE
+router.get('/drinks/:id/cancel', (req,res,next) => {
+    res.redirect(`/drinkdetails/${req.params.id}`)
+})
+
   
 module.exports = router;
 

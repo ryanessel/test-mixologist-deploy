@@ -120,6 +120,7 @@ router.post('/liquors/:id/edit',uploadSys.single('liquorIMG'), (req, res, next)=
 
 });
 
+//----------------------------- CANCEL LIQUOR ROUTE
 router.get('/liquordetails/:id/cancel', (req,res,next) => {
     res.redirect(`/liquordetails/${req.params.id}`);
 })

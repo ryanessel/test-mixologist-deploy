@@ -111,6 +111,8 @@ router.post('/ingredients/:id/edit', uploadSys.single('ingIMG'), (req, res, next
 
 });
 
+
+//----------------------------- CANCEL INGREDIENTS ROUTE
 router.get('/ingredients/:id/cancel', (req,res,next) => {
     res.redirect(`/ingredientdetails/${req.params.id}`)
 })
