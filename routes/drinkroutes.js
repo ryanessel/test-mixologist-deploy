@@ -54,7 +54,7 @@ router.post('/createdrink',uploadSys.single('drinkIMG'), (req, res, next)=>{
                         $push: {ingredients: {ingredientObject: req.body[`ingObj`], quantity:0}}
                         }).then(() => {
                             Drinks.findByIdAndUpdate(createdDrink._id, {
-                                $push: {liquors: {liquorsObject: req.body.liqObj, quantity: 0}}
+                                $push: {liquors: {liquorsObject: req.body[`liqObj`], quantity: 0}}
                                 
                         }).then(() => {
                         User.findByIdAndUpdate(req.session.currentlyLoggedIn._id,{$push: {drinksCreated: createdDrink._id}}, {new: true})

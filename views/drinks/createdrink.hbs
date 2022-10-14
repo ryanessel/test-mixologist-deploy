@@ -21,23 +21,91 @@
     <br>
 <br>
 
-<label>Ingredients</label> <select name="ingObj" id="ingObj" multiple>
-    <option value=""></option>
-    {{#each ing}}
-        <option value ="{{this._id}}">{{this.name}}</option>
-    {{/each}}
-    </select>
-    <br>
-<br>
 
-<label>Liquors</label> <select name="liqObj" id="liqObj" multiple>
-    <option value=""></option>
+<label>Ingredients</label>
+<table>
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th></th>
+        </tr>
+    </thead>
+<tbody id="ingredientTable">
+    <tr>
+        <td>
+            <select name="ingType" id="ingTypesSelect">
+                <option value="" selected disabled hidden></option>
+                <option value="Syrup">Syrup</option>
+                <option value="Fruit">Fruit</option>
+                <option value="Carbonated mixers">Carbonated mixers</option>
+                <option value="Juice">Juice</option>
+                <option value="Bitters">Bitters</option>
+                <option value="Garnish">Garnish</option>
+                <option value="Dairy">Dairy</option>
+                <option value="Caffeinated beverages">Caffeinated beverages</option>
+                <option value="Sauces">Sauces</option>
+                <option value="Prepared mixes">Prepared mixes</option>
+            </select>
+        </td>
+        <td>
+            <select name="ingSelect" id="ingSelect">
+                <option value="" selected disabled hidden></option>
+                {{#each ing}}
+                    <option value ='{{this._id}}'>{{this.name}}</option>
+                {{/each}}
+            </select>
+        </td>
+        <td>
+            <input type="text" name="quantity" id="ingQuantity">
+        </td>
+        <td>
+            <a href="#" onclick="addLine('ingredientTable')">Add Ingredient</a>
+        </td>
+    </tr>
+</tbody>
+</table>
+<br><br>
+
+<label>Liquors</label>
+<table>
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+<tbody id="liquorTable">
+    <tr>
+        <td>
+            <select name="liqType" id="ingTypesSelect">
+                <option value="" selected disabled hidden></option>
+                <option value="Vodka">Vodka</option>
+                <option value="Tequila">Tequila</option>
+                <option value="Gin">Gin</option>
+                <option value="Rum">Rum</option>
+                <option value="Whiskey">Whiskey</option>
+                <option value="Brandy">Brandy</option>
+                <option value="Other">Other</option>
+            </select>
+        </td>
+        <td>
+            <select name="liqSelect" id="liqSelect">
+                <option value="" selected disabled hidden></option>
     {{#each liquor}}
         <option value ="{{this._id}}">{{this.name}}</option>
     {{/each}}
-    </select>
-    <br>
-<br>
+            </select>
+        </td>
+        <td>
+            <input type="text" name="quantity" id="liqQuantity">
+        </td>
+    </tr>
+</tbody>
+</table>
+<br><br>
 
 <label>Glasswear</label> <select name="glasswear" id="glasswear">
         <option value=""></option>
