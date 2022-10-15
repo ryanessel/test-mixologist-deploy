@@ -5,22 +5,50 @@
 <label for="name">Cocktail Name
     <input type="text" name="name">
 </label>
-<br>
-<br>
+<br><br>
 
-<label>Tools Needed</label> <select name="tools" id="tools">
-        <option value="" selected disabled hidden>Select an Option</option>
-        <option value="Shaker Tin">Shaker Tin</option>
-        <option value="Muddler">Muddler</option>
-        <option value="Bar Spoon">Bar Spoon</option>
-        <option value="Jigger">Jigger</option>
-        <option value="Strainer">Strainer</option>
-        <option value="Mesh Strainer">Mesh Strainer</option>
-        <option value="Other">Other</option>
-    </select>
-    <br>
-<br>
-
+<label>Liquors</label>
+<table>
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th></th>
+        </tr>
+    </thead>
+<tbody id="liquorTable">
+    <tr>
+        <td>
+            <select name="liqType" id="liqTypesSelect">
+                <option value="" selected disabled hidden></option>
+                <option value="Vodka">Vodka</option>
+                <option value="Tequila">Tequila</option>
+                <option value="Gin">Gin</option>
+                <option value="Rum">Rum</option>
+                <option value="Whiskey">Whiskey</option>
+                <option value="Brandy">Brandy</option>
+                <option value="Other">Other</option>
+            </select>
+        </td>
+        <td>
+            <select name="liqSelect" id="liqSelect">
+                <option value="" selected disabled hidden></option>
+    {{#each liquor}}
+        <option value ="{{this._id}}">{{this.name}}</option>
+    {{/each}}
+            </select>
+        </td>
+        <td>
+            <input type="text" name="quantity" id="liqQuantity">
+        </td>
+        <td>
+            <a href="#" onclick="addLiqLine('liquorTable')">Add Liquor</a>
+        </td>
+    </tr>
+</tbody>
+</table>
+<br><br>
 
 <label>Ingredients</label>
 <table>
@@ -61,72 +89,76 @@
             <input type="text" name="quantity" id="ingQuantity">
         </td>
         <td>
-            <a href="#" onclick="addLine('ingredientTable')">Add Ingredient</a>
+            <a href="#" onclick="addIngLine('ingredientTable')">Add Ingredient</a>
         </td>
     </tr>
 </tbody>
 </table>
 <br><br>
 
-<label>Liquors</label>
+<label>Tools Needed</label> 
 <table>
     <thead>
-        <tr>
-            <th>Type</th>
-            <th>Name</th>
-            <th>Quantity</th>
-        </tr>
+        <th></th>
+        <th></th>
     </thead>
-<tbody id="liquorTable">
-    <tr>
-        <td>
-            <select name="liqType" id="ingTypesSelect">
-                <option value="" selected disabled hidden></option>
-                <option value="Vodka">Vodka</option>
-                <option value="Tequila">Tequila</option>
-                <option value="Gin">Gin</option>
-                <option value="Rum">Rum</option>
-                <option value="Whiskey">Whiskey</option>
-                <option value="Brandy">Brandy</option>
+    <tbody id="toolTable">
+        <tr>
+            <td>
+                <select name="tools" id="tools">
+                <option value="" selected disabled hidden>Select an Option</option>
+                <option value="Shaker Tin">Shaker Tin</option>
+                <option value="Muddler">Muddler</option>
+                <option value="Bar Spoon">Bar Spoon</option>
+                <option value="Jigger">Jigger</option>
+                <option value="Strainer">Strainer</option>
+                <option value="Mesh Strainer">Mesh Strainer</option>
                 <option value="Other">Other</option>
-            </select>
-        </td>
-        <td>
-            <select name="liqSelect" id="liqSelect">
-                <option value="" selected disabled hidden></option>
-    {{#each liquor}}
-        <option value ="{{this._id}}">{{this.name}}</option>
-    {{/each}}
-            </select>
-        </td>
-        <td>
-            <input type="text" name="quantity" id="liqQuantity">
-        </td>
-    </tr>
-</tbody>
+                </select>
+            </td>
+            <td>
+               <a href="#" onclick="addToolLine('toolTable')">Add Tool</a> 
+            </td>
+        </tr>
+    </tbody>
 </table>
-<br><br>
+ <br> <br>
 
-<label>Glasswear</label> <select name="glasswear" id="glasswear">
-        <option value=""></option>
-        <option value="Highball">Highball</option>
-        <option value="Mug">Mug</option>
-        <option value="Rocks Glass">Rocks Glass</option>
-        <option value="Tumbler">Tumbler</option>
-        <option value="Martini Glass">Martini Glass</option>
-        <option value="Margarita Glass">Margarita Glass</option>
-        <option value="Hurricane Glass">Hurricane Glass</option>
-        <option value="Shooter">Shooter</option>
-        <option value="Snifter">Snifter</option>
-        <option value="Collins">Collins</option>
-        <option value="Pint">Pint</option>
-        <option value="Flute">Flute</option>
-        <option value="Nick and Nora Glass">Nick and Nora Glass</option>
-        <option value="Wine Glass">Wine Glass</option>
-        <option value="Other">Other</option>
-    </select>
-    <br>
-<br>
+<label>Glasswear</label> 
+<table>
+    <thead>
+        <th></th>
+        <th></th>
+    </thead>
+    <tbody id="glassTable">
+        <tr>
+            <td>
+                <select name="glasswear" id="glasswear">
+                        <option value="" selected disabled hidden>Select an Option</option>
+                        <option value="Highball">Highball</option>
+                        <option value="Mug">Mug</option>
+                        <option value="Rocks Glass">Rocks Glass</option>
+                        <option value="Tumbler">Tumbler</option>
+                        <option value="Martini Glass">Martini Glass</option>
+                        <option value="Margarita Glass">Margarita Glass</option>
+                        <option value="Hurricane Glass">Hurricane Glass</option>
+                        <option value="Shooter">Shooter</option>
+                        <option value="Snifter">Snifter</option>
+                        <option value="Collins">Collins</option>
+                        <option value="Pint">Pint</option>
+                        <option value="Flute">Flute</option>
+                        <option value="Nick and Nora Glass">Nick and Nora Glass</option>
+                        <option value="Wine Glass">Wine Glass</option>
+                        <option value="Other">Other</option>
+                </select>
+            </td>
+            <td>
+               <a href="#" onclick="addGlassLine('glassTable')">Add Tool</a> 
+            </td>
+        </tr>
+    </tbody>
+</table>
+ <br> <br>
 
 <div>
 Instructions
@@ -166,5 +198,13 @@ Picture
 
 <br><br>
 
+
+<input type="number" id="ingN" name="ingN" style="display: none;"></input>
+<input type="number" id="liqN" name="liqN" style="display: none;"></input>
+<input type="number" id="toolN" name="toolN" style="display: none;"></input>
+<input type="number" id="glassN" name="glassN" style="display: none;"></input>
+
 <button>Create</button>
 </form>
+
+<script src="/scripts/drinkDOM.js"></script>

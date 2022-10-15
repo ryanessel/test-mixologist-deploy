@@ -3,7 +3,7 @@ const {Schema, model} = mongoose;
 
 const drinkSchema = new Schema({
     name: String,
-    ingredients:
+    ingredient:
          [{
             ingredientObject:{
                 type: Schema.Types.ObjectId,
@@ -14,9 +14,9 @@ const drinkSchema = new Schema({
             }
           }],
 
-    liquors:
+    liquor:
         [{ 
-            liquorsObject:{
+            liquorObject:{
                 type: Schema.Types.ObjectId,
                 ref: "Liquor"
         }, 
@@ -35,7 +35,6 @@ const drinkSchema = new Schema({
     description: String,
     image: String,
     url: String,
-    price: Number,
     tags: String,
     }, {
         timestamps: true

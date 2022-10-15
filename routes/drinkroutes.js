@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const Drinks = require("../models/Drinks.model")
+const Drinks = require("../models/Drink.model")
 const User = require("../models/User.model")
 const uploadSys = require('../config/cloudinary_ing.js');
-const Ingredients = require("../models/Ingredients.model")
-const Liquors = require("../models/Liquors.model")
+const Ingredient = require("../models/Ingredient.model")
+const Liquor = require("../models/Liquor.model")
 
 
 //--------ROUTE TO DISPLAY DRINK LIST
@@ -17,9 +17,9 @@ router.get('/drinklist', (req, res, next) => {
 
 //-------ROUTE TO DISPLAY CREATE DRINKS
 router.get('/createdrink', (req, res, next) => {
-    Ingredients.find()
+    Ingredient.find()
     .then((resultIng)=>{
-    Liquors.find()
+    Liquor.find()
     .then((resultLiq)=>{
         res.render('drinks/createdrink', {ing: resultIng, liquor: resultLiq});
     })
@@ -28,6 +28,27 @@ router.get('/createdrink', (req, res, next) => {
 
 router.post('/createdrink',uploadSys.single('drinkIMG'), (req, res, next)=>{
 
+    let ingArray = []
+    let liqArray = []
+    let toolArray = []
+    let glassArray = []
+
+    for (i=0;i<req.body.ingN;i++){
+        ingArray.push({ingredientObject: req.body[`ingObj${i}`], quantity:req.body[`ingQnt${i}`]})
+    }
+
+    for (i=0;i<req.body.liqN;i++){
+        liqArray.push({liquorObject: req.body[`liqObj${i}`], quantity:req.body[`liqQnt${i}`]})
+    }
+
+    for (i=0;i<req.body.toolN;i++){
+        toolArray.push(req.body[`toolObj${i}`])
+    }
+
+    for (i=0;i<req.body.glassN;i++){
+        glassArray.push(req.body[`glassObj${i}`])
+    }
+
     let img
     if(typeof req.file == 'undefined'){
         img = 'NoneSelected'
@@ -35,47 +56,36 @@ router.post('/createdrink',uploadSys.single('drinkIMG'), (req, res, next)=>{
        img = req.file.path
     };
 
+    
     Drinks.create({
             name: req.body.name
             ,instructions: req.body.instructions
-            // ,quantity: req.body.quantity
             ,description: req.body.description
             ,url: req.body.url
-            // ,price: req.body.price
             ,image: img
             ,tags: req.body.tags
+            ,ingredient: ingArray
+            ,liquor: liqArray
+            ,tools: toolArray
+            ,glasswear: glassArray
             ,likeCount: 0 
         }).then((createdDrink) => {
-            Drinks.findByIdAndUpdate(createdDrink._id, {
-                $push: {tools: req.body.tools,
-                        glasswear: req.body.glasswear}
-                }).then(() =>{
-                    Drinks.findByIdAndUpdate(createdDrink._id, {
-                        $push: {ingredients: {ingredientObject: req.body[`ingObj`], quantity:0}}
-                        }).then(() => {
-                            Drinks.findByIdAndUpdate(createdDrink._id, {
-                                $push: {liquors: {liquorsObject: req.body[`liqObj`], quantity: 0}}
-                                
-                        }).then(() => {
-                        User.findByIdAndUpdate(req.session.currentlyLoggedIn._id,{$push: {drinksCreated: createdDrink._id}}, {new: true})
-                        .then((updatedUser) => {
-                            req.session.currentlyLoggedIn = updatedUser;
-            
-                            console.log({seshUserIng: req.session.currentlyLoggedIn.drinksCreated, updatedUser});
-                            res.redirect(`/drinkdetails/${createdDrink._id}`)
-                        })
-                    })
+                User.findByIdAndUpdate(req.session.currentlyLoggedIn._id,{$push: {drinksCreated: createdDrink._id}}, {new: true})
+                .then((updatedUser) => {
+                    req.session.currentlyLoggedIn = updatedUser;
+    
+                    console.log({seshUserIng: req.session.currentlyLoggedIn.drinksCreated, updatedUser});
+                    res.redirect(`/drinkdetails/${createdDrink._id}`)
                 })
-            })
-         }).catch(error => next(error));
-    })
-
+            }).catch(error => next(error));
+        })
 
 
 //---------ROUTE TO DISPLAY DRINK DETAILS
 router.get('/drinkdetails/:drinkId', (req, res, next) => {
-    Drinks.findById(req.params.drinkId).populate(["ingredients","liquors"])
+    Drinks.findById(req.params.drinkId).populate([{model:'Ingredient', path:'ingredient.ingredientObject'},{model:'Liquor', path:'liquor.liquorObject'}])
     .then((drink)=>{
+        console.log(drink)
         res.render('drinks/drinkdetails', {drink: drink});
     }).catch((err)=>{
         console.log(err);
@@ -98,10 +108,10 @@ router.post('/drinks/:id/delete', (req, res, next)=>{
 
  //----------------------------- EDIT DRINKS ROUTE
 router.get('/drinks/:id/edit', (req, res, next) => {
-    Drinks.findById(req.params.id)
+    Drinks.findById(req.params.id).populate([{model:'Ingredient', path:'ingredient.ingredientObject'},{model:'Liquor', path:'liquor.liquorObject'}])
     .then(drinksFromDb => {
         console.log(drinksFromDb);
-        res.render('drinks/editdrink', drinksFromDb);
+        res.render('drinks/editdrink', {drink:drinksFromDb});
 }).catch(err => {console.log({err})});
 })
 

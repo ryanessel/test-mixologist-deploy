@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Ingredients = require("../models/Ingredients.model")
+const Ingredients = require("../models/Ingredient.model")
 const User = require("../models/User.model")
 const uploadSys = require('../config/cloudinary_ing.js');
 

@@ -1,79 +1,248 @@
-<h2>Edit Drink</h2>
+<h2>Create Drink</h2>
+
+<form action="/createdrink" method="post" enctype="multipart/form-data">
+
+<label for="name">Cocktail Name
+    <input type="text" name="name" value="{{drink.name}}">
+</label>
+<br><br>
+
+<label>Liquors</label>
+<table>
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th></th>
+        </tr>
+    </thead>
+<tbody id="liquorTable">
+    <tr>
+        <td>
+            <select name="liqType" id="liqTypesSelect">
+                <option value="" selected disabled hidden></option>
+                <option value="Vodka">Vodka</option>
+                <option value="Tequila">Tequila</option>
+                <option value="Gin">Gin</option>
+                <option value="Rum">Rum</option>
+                <option value="Whiskey">Whiskey</option>
+                <option value="Brandy">Brandy</option>
+                <option value="Other">Other</option>
+            </select>
+        </td>
+        <td>
+            <select name="liqSelect" id="liqSelect">
+                <option value="" selected disabled hidden></option>
+    {{!-- {{#each }} --}}
+        <option value ="{{drink.name}}">{{drink.name}}</option>
+    {{!-- {{/each}} --}}
+            </select>
+        </td>
+        <td>
+            <input type="text" name="quantity" id="liqQuantity">
+        </td>
+        <td>
+            <a href="#" onclick="addLiqLine('liquorTable')">Add Liquor</a>
+        </td>
+    </tr>
+    {{#each drink.liquor}}
+    <tr id="{{this.liquorObject.name}}">
+        <td class="typeColumn">
+            <select disabled>
+            <option value="">{{this.liquorObject.type}}</option>
+            </select>
+        </td>
+        <td class="liqColumn" >
+            <select name="{{this.liquorObject.name}}">
+            <option value="{{this.liquorObject._id}}">{{this.liquorObject.name}}</option>
+            </select>
+        </td>
+        <td class="quantityColumn">
+            <input type="text" name="{{this.quantity}}" value="{{this.quantity}}">
+        </td>
+        <td class="actionColumn">
+            <a href="#" onclick="removeLine('{{this.liquorObject.name}}')" class="btn-remove">Remove</a>
+        </td>
+    </tr>
+    {{/each}}
+</tbody>
+</table>
+<br><br>
+
+<label>Ingredients</label>
+<table>
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th></th>
+        </tr>
+    </thead>
+<tbody id="ingredientTable">
+    <tr>
+        <td>
+            <select name="ingType" id="ingTypesSelect">
+                <option value="" selected disabled hidden></option>
+                <option value="Syrup">Syrup</option>
+                <option value="Fruit">Fruit</option>
+                <option value="Carbonated mixers">Carbonated mixers</option>
+                <option value="Juice">Juice</option>
+                <option value="Bitters">Bitters</option>
+                <option value="Garnish">Garnish</option>
+                <option value="Dairy">Dairy</option>
+                <option value="Caffeinated beverages">Caffeinated beverages</option>
+                <option value="Sauces">Sauces</option>
+                <option value="Prepared mixes">Prepared mixes</option>
+            </select>
+        </td>
+        <td>
+            <select name="ingSelect" id="ingSelect">
+                <option value="" selected disabled hidden></option>
+                {{#each ing}}
+                    <option value ='{{this._id}}'>{{this.name}}</option>
+                {{/each}}
+            </select>
+        </td>
+        <td>
+            <input type="text" name="quantity" id="ingQuantity">
+        </td>
+        <td>
+            <a href="#" onclick="addIngLine('ingredientTable')">Add Ingredient</a>
+        </td>
+    </tr>
+    {{#each drink.ingredient}}
+    <tr id="{{this.ingredientObject.name}}">
+        <td class="typeColumn">
+            <select disabled>
+            <option value="{{this.ingredientObject.type}}">{{this.ingredientObject.type}}</option>
+            </select>
+        </td>
+        <td class="ingColumn">
+            <select name="{{this.ingredientObject.name}}">
+            <option value="{{this.ingredientObject._id}}">{{this.ingredientObject.name}}</option>
+            </select>
+        </td>
+        <td class="quantityColumn">
+            <input type="text" name="{{this.quantity}}" value="{{this.quantity}}">
+        </td>
+        <td class="actionColumn">
+            <a href="#" onclick="removeLine('{{this.ingredientObject.name}}')" class="btn-remove">Remove</a>
+        </td>
+    </tr>
+    {{/each}}
+</tbody>
+</table>
+<br><br>
+
+<label>Tools Needed</label> 
+<table>
+    <thead>
+        <th></th>
+        <th></th>
+    </thead>
+    <tbody id="toolTable">
+        <tr>
+            <td>
+                <select name="tools" id="tools">
+                <option value="" selected disabled hidden>Select an Option</option>
+                <option value="Shaker Tin">Shaker Tin</option>
+                <option value="Muddler">Muddler</option>
+                <option value="Bar Spoon">Bar Spoon</option>
+                <option value="Jigger">Jigger</option>
+                <option value="Strainer">Strainer</option>
+                <option value="Mesh Strainer">Mesh Strainer</option>
+                <option value="Other">Other</option>
+                </select>
+            </td>
+            <td>
+               <a href="#" onclick="addToolLine('toolTable')">Add Tool</a> 
+            </td>
+        </tr>
+        {{#each drink.tools}}
+        <tr id="{{this}}" class="toolRecord">
+              <td class="toolColumn" >
+                <select name="{{this}}">
+                <option value="{{this}}">{{this}}</option>
+                </select>
+            <td class="actionColumn">
+                <a href="#" onclick="removeLine('{{this}}')" class="btn-remove">Remove</a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+ <br> <br>
+
+<label>Glasswear</label> 
+<table>
+    <thead>
+        <th></th>
+        <th></th>
+    </thead>
+    <tbody id="glassTable">
+        <tr>
+            <td>
+                <select name="glasswear" id="glasswear">
+                        <option value="" selected disabled hidden>Select an Option</option>
+                        <option value="Highball">Highball</option>
+                        <option value="Mug">Mug</option>
+                        <option value="Rocks Glass">Rocks Glass</option>
+                        <option value="Tumbler">Tumbler</option>
+                        <option value="Martini Glass">Martini Glass</option>
+                        <option value="Margarita Glass">Margarita Glass</option>
+                        <option value="Hurricane Glass">Hurricane Glass</option>
+                        <option value="Shooter">Shooter</option>
+                        <option value="Snifter">Snifter</option>
+                        <option value="Collins">Collins</option>
+                        <option value="Pint">Pint</option>
+                        <option value="Flute">Flute</option>
+                        <option value="Nick and Nora Glass">Nick and Nora Glass</option>
+                        <option value="Wine Glass">Wine Glass</option>
+                        <option value="Other">Other</option>
+                </select>
+            </td>
+            <td>
+               <a href="#" onclick="addGlassLine('glassTable')">Add Tool</a> 
+            </td>
+        </tr>
+        {{#each drink.glasswear}}
+        <tr id="{{this}}" class="glassRecord">
+            <td class="glassColumn" >
+                <select name="{{this}}">
+                <option value="{{this}}">{{this}}</option>
+                </select>
+            <td class="actionColumn">
+                <a href="#" onclick="removeLine('{{this}}')" class="btn-remove">Remove</a>
+            </td>
+        </tr>
+        {{/each}}
+
+    </tbody>
+</table>
+ <br> <br>
 
 <div>
-<form action="/drinks/{{drink.id}}" method="post">
-
-<label for ="name">Cocktail Name</label>
-    <input type:"text" name="name" value="{{name}}">
-
-<br><br>
-
-<label for="tools">Tools Needed</label>
-<select name="tools" id="tools"> 
-<option value="{{tools}}" selected disabled hidden>{{tools}}</option>
-    <option value="Shaker Tin">Shaker Tin</option>
-    <option value="Muddler">Muddler</option>
-    <option value="Bar Spoon">Bar Spoon</option>
-    <option value="Jigger">Jigger</option>
-    <option value="Strainer">Strainer</option>
-    <option value="Mesh Strainer">Mesh Strainer</option>
-    <option value="Other">Other</option>
-</select>
+Instructions
+    <input type="text" name="instructions" value="{{drink.instructions}}">
+</div>
 
 <br><br>
 
-<label>Ingredients</label> <select name="ingredients" id="ingredients" select="multiple">
-    <option value=""></option>
-    {{#each ing}}
-        <option value ="{{this._id}}">{{this.name}}</option>
-    {{/each}}
-    </select>
-    <br>
-<br>
-
-<label>Liquors</label> <select name="liquors" id="liquors" select="multiple">
-    <option value=""></option>
-    {{#each liquor}}
-        <option value ="{{this._id}}">{{this.name}}</option>
-    {{/each}}
-    </select>
-    <br>
-<br>
-
-<label for="glasswear">Glasswear</label>
-<select name="glasswear" id="glasswear">
-    <option value="{{glasswear}}" selected disabled hidden>{{glasswear}}</option>
-        <option value="Highball">Highball</option>
-        <option value="Mug">Mug</option>
-        <option value="Rocks Glass">Rocks Glass</option>
-        <option value="Tumbler">Tumbler</option>
-        <option value="Martini Glass">Martini Glass</option>
-        <option value="Margarita Glass">Margarita Glass</option>
-        <option value="Hurricane Glass">Hurricane Glass</option>
-        <option value="Shooter">Shooter</option>
-        <option value="Snifter">Snifter</option>
-        <option value="Collins">Collins</option>
-        <option value="Pint">Pint</option>
-        <option value="Flute">Flute</option>
-        <option value="Nick and Nora Glass">Nick and Nora Glass</option>
-        <option value="Wine Glass">Wine Glass</option>
-        <option value="Other">Other</option>
-</select>
+<div>
+ Description
+    <input type="text" name="description" value="{{drink.description}}">
+</label>
+</div>
 
 <br><br>
 
-<label for ="instructions">Instructions</label>    
-     <input type:"text" name="instructions" value="{{instructions}}">
-
-<br><br>
-
-<label for ="description">Description</label>    
-<input type:"text" name="description" value="{{description}}">
-
-<br><br>
-
-<label for ="url">Original Website (optional)</label>
-    <input type:"text" name="url" value="{{url}}">
+<div>
+ Original Website (optional)
+    <input type="text" name="url" value="{{drink.url}}">
+</label>
+</div>
 
 <br><br>
 
@@ -85,15 +254,25 @@ Picture
 
 <br><br>
 
-<label for ="tags">Tags</label>
-    <input type:"text" name="tags" value="{{tags}}">
+<div>
+    Tags
+    <input type="text" name="tags" value="{{drink.tags}}">
+</div>
 
 <br><br>
 
-<button type ="submit">Edit</button>
+
+<input type="number" id="ingN" name="ingN" style="display: none;"></input>
+<input type="number" id="liqN" name="liqN" style="display: none;"></input>
+<input type="number" id="toolN" name="toolN" style="display: none;"></input>
+<input type="number" id="glassN" name="glassN" style="display: none;"></input>
+
+<button type ="submit">Submit Changes</button>
 </form>
 </div>
 
-<form action="/drinks/{{id}}/cancel" method="get">
+<form action="/drinks/{{drink._id}}/cancel" method="get">
 <button type="submit">Cancel</button>
 </form>
+
+<script src="/scripts/drinkDOM.js"></script>
