@@ -86,7 +86,7 @@ router.get('/login', (req, res, next)=>{
   // ================ PROFILE
 
   router.get('/profile', (req, res, next)=>{
-    console.log(req.session.currentlyLoggedIn)
+    //console.log(req.session.currentlyLoggedIn)
     User.findById(req.session.currentlyLoggedIn._id)//.populate('location')
     .then((theUser)=>{
       res.render('auth/profile', {theUser: theUser})

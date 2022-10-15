@@ -9,49 +9,61 @@
     <link href="http://fonts.cdnfonts.com/css/mislian" rel="stylesheet">
 </head>
 <body>
+<div class="index-container">
 
-    <div class="index-container">
+    <div class ='title'>
+    <h1><center>MIXOLOGIST</center></h1>
+    </div>
 
-
-<div class ='title'>
-<h1><center>MIXOLOGIST</center></h1>
-</div>
-
-
-<br>
-{{#unless theUser}}
-<div class = "auth-btn">
-<a href="login" class="auth">
-    Login
-    </a>
-
-<a href="signup" class="auth">
-    Sign Up
-    </a>
-</div>
-{{/unless}}
-
-<br> 
-
+    
 <div class = "other-btn">
-<a href="drinklist" class="other">
-    Drinks
-    </a>
+    <a href="drinklist" class="other">
+        Drinks
+        </a>
 
-<a href="liquorlist" class="other">
-    Liquors
-    </a>
+    <a href="liquorlist" class="other">
+        Liquors
+        </a>
 
-<a href="ingredientlist" class="other">
-    Ingredients
-    </a>
+    <a href="ingredientlist" class="other">
+        Ingredients
+        </a>
 </div>
 
-<br/><br/>
+    <div class = "auth-btn">
 
+        {{#unless theUser}}
+        <a href="login" class="auth">
+            Login
+        </a>
+
+        <a href="signup" class="auth">
+            Sign Up
+        </a>
+        {{/unless}}
+
+        {{#if theUser}}
+        <div>
+            <h4>Welcome Back {{theUser.username}}</h4>
+            {{#if theUser.image}}
+            <a href="/profile"><img src="{{theUser.image}}" alt="" class="profileImgMedium"></a>
+            {{/if}}
+            {{#unless theUser.image}}
+            <img src='/images/noProfileImage.png' alt="" class="profileImgMedium">
+            {{/unless}}
+        </div>
+        
+
+        <form id="logout" action="/logout" method="post">
+        <a href="#" onclick="logoutButton()" class="auth">
+            Logout
+        </a>
+        </form>
+        {{/if}}
+
+    </div>
 
     <script src="/scripts/script.js"></script>
-    <script src="/scripts/drinkDOM.js"></script>
 </div>
 </body>
 </html>

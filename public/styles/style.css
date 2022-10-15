@@ -134,14 +134,7 @@ a:active { text-decoration: none; }
   position: relative;
   transition: 0.5s;
 }
-.other span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
+
 .other:hover {
   background-color: #FFA07A;
 }
@@ -168,6 +161,7 @@ body, html {
 }
 
 /* TITLE STYLE */
+/*
 @import url('http://fonts.cdnfonts.com/css/mislian');
 
   .title{
@@ -208,6 +202,7 @@ body, html {
   * {
     box-sizing: border-box;
   }
+  */
 
 /*BODY STYLING FOR OTHER VIEWS*/
 html{
