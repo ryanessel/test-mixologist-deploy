@@ -1,6 +1,6 @@
-<h1>My Bar</h1>
+<h2>My Bar<span>Welcome back {{theUser.username}}</span></h2>
 <br>
-<h4>Welcome back {{theUser.username}}!!</h4>
+
 <h5>Linked email: {{theUser.email}}</h5>
 
 {{#if theUser.image}}
@@ -9,6 +9,7 @@
 {{#unless theUser.image}}
 <img src='/images/noProfileImage.png' alt="" class="profileImgMedium">
 {{/unless}}
+
 
 <form action="/update-profile-image" method="post" enctype="multipart/form-data">
 <div>
