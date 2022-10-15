@@ -6,19 +6,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/styles/style.css">
+    <link href="http://fonts.cdnfonts.com/css/mislian" rel="stylesheet">
 </head>
 <body>
-<h1>THE MIXOLIGIST TEAM SITE</h1>
-{{!-- <img src="/images/lose.webp" alt=""> --}}
+
+    <div class="index-container">
+
+
+{{!-- TITLE STYLE 1
+<div class ='title'>
+ <p class="title title__top">MIXOLIGIST</p>
+  <p class="title title__bot">MIXOLIGIST</p>
+</div> --}}
+
+{{!-- TITLE STYLE 2 --}}
+<div class ='title'>
+<h1><center>MIXOLOGIST</center></h1>
+</div>
+
+
+{{!-- TITLE STYLE 3
+<section class="title">
+  <h3>The</h3>
+  <h1><span class="fontawesome-star star"></span> <span>Mixologist</span> <span class="fontawesome-star star"></span></h1>
+</section> --}}
+
 <br>
-<br>
-<hr>
-<br>
-<br>
-<img src="/images/underConstruction.png" alt="">
-<p>(still in development tho)</p>
+{{#unless theUser}}
+<div class = "auth-btn">
+<a href="login" class="auth">
+    Login
+    </a>
+
+<a href="signup" class="auth">
+    Sign Up
+    </a>
+</div>
+{{/unless}}
+
+<br> 
+
+<div class = "other-btn">
+<a href="drinklist" class="other">
+    Drinks
+    </a>
+
+<a href="liquorlist" class="other">
+    Liquors
+    </a>
+
+<a href="ingredientlist" class="other">
+    Ingredients
+    </a>
+</div>
+
+<br/><br/>
+
 
     <script src="/scripts/script.js"></script>
     <script src="/scripts/drinkDOM.js"></script>
+</div>
 </body>
 </html>

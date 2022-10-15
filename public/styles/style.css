@@ -18,7 +18,7 @@
   /* Style the buttons that are used to open the tab content */
   .tab button {
     background-color: inherit;
-    float: left;
+    float: center;
     border: none;
     outline: none;
     cursor: pointer;
@@ -36,7 +36,7 @@
     background-color: #ccc;
   }
   
-  Style the tab content */
+  /*Style the tab content */
   .tabcontent {
     display: none;
     padding: 6px 12px;
@@ -48,3 +48,521 @@
     margin-bottom: 0px;
     margin-top: 1vw;
    }
+
+/* AUTH BUTTONS ON HOMEPAGE */
+
+.auth-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 50px;
+  margin: 50px;
+  
+}
+
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:active { text-decoration: none; }
+
+.auth {
+  display: inline-block;
+  background-color: #FFEBCD;
+  border-radius: 10px;
+  border: 4px double #cccccc;
+  color: #A52A2A;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+.auth span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.auth span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+.auth:hover {
+  background-color: #FFA07A;
+}
+.auth:hover span {
+  padding-right: 25px;
+}
+.auth:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/* OTHER BUTTONS ON HOMEPAGE */
+.other-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+ 
+}
+
+.other {
+  display: inline-block;
+  background-color: #FFEBCD;
+  border-radius: 10px;
+  border: 4px double #cccccc;
+  color: #A52A2A;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+.other span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.other span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+.other:hover {
+  background-color: #FFA07A;
+}
+.other:hover span {
+  padding-right: 25px;
+}
+.other:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/* BACKGROUND OF HOME PAGE */
+.index-container {
+  background-image: url("/images/blurredBackground.webp");
+ /* background-image: url("/images/liquorBottles.jpeg"); */
+ width:100%;
+ height:100%; 
+ background-size:cover;background-repeat:no-repeat;background-position:center center;background-attachment: fixed;
+}
+
+body, html {
+   height: 100%;
+   margin: 0;
+}
+
+/* TITLE STYLE 2 */
+@import url('http://fonts.cdnfonts.com/css/mislian');
+
+  .title{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10px;
+    background: inherit;
+    background-attachment: fixed;
+  }
+  .title::before {
+    content: "";
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    background-attachment: fixed;
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    transform: scale(2) translateY(20px);
+  }
+  .title > h1 {
+    margin: 0;
+    color: white;
+    position: relative;
+    z-index: 1;
+    font-size: 100px;
+    letter-spacing: 10px;
+    line-height: 1;
+    margin: 0;
+    position: relative;
+    font-family: 'Mislian', sans-serif;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+
+/*BODY STYLING FOR OTHER VIEWS*/
+html{
+  background-image: url("/images/blurredBackground.webp");
+  background-repeat:no-repeat;
+  background-attachment: fixed;
+ background-size: cover;
+}
+
+/*NAV BAR STYLING*/
+
+ ul {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  background-color: #FFEBCD; opacity: .75; filter: alpha;
+}
+
+li {
+  float: left;
+}
+
+li > a {
+  display: block;
+  padding: 8px;
+  color: #A52A2A;;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul > a {
+  display: block;
+  padding: 8px;
+  color: #A52A2A;;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #FFA07A;
+  opacity: 1.0;
+}
+
+
+/*TITLE STYLING FOR VIEWS*/
+h2 {
+  text-align:center;
+  font-size:50px;
+  text-transform:uppercase;
+  color:#FFEBCD;
+  letter-spacing:1px;
+  font-family:"Playfair Display", serif;
+  font-weight:400;
+  padding: 50px;
+}
+h2 span {
+  margin-top: 5px;
+    font-size:15px; color:#FFEBCD; word-spacing:1px; font-weight:normal; letter-spacing:2px;
+    text-transform: uppercase; font-family:"Raleway", sans-serif;
+    font-weight:500;
+
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    grid-template-rows: 27px 0;
+    grid-gap: 20px;
+    align-items: center;
+}
+
+h2 span:after, h2 span:before {
+    content: " ";
+    display: block;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    height: 5px;
+  background-color:transparent;
+}
+/*SIGN UP */
+.auth-container{
+  width: 406px;
+  max-width: 406px;
+  margin: 0 auto;
+}
+
+#auth {
+  padding: 0px 25px 25px;
+  background: #fff;
+  box-shadow: 
+      0px 0px 0px 5px rgba( 255,255,255,0.4 ), 
+      0px 4px 20px rgba( 0,0,0,0.33 );
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  display: table;
+  position: static;
+}
+
+#auth .header {
+  margin-bottom: 20px;
+}
+
+#auth .header h3 {
+  color: #333333;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#auth .sep {
+  height: 1px;
+  background: #e8e8e8;
+  width: 406px;
+  margin: 0px -25px;
+}
+
+#auth .inputs {
+  margin-top: 50px;
+}
+
+#auth .inputs label {
+  color: #8f8f8f;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin-bottom: 7px;
+  display: block;
+}
+
+input::-webkit-input-placeholder {
+  color:    #b5b5b5;
+}
+
+input:-moz-placeholder {
+  color:    #b5b5b5;
+}
+
+#auth .inputs input[type=username],input[type=email], input[type=password]  {
+  background: #f5f5f5;
+  font-size: 0.8rem;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  border: none;
+  padding: 13px 10px;
+  width: 330px;
+  margin-bottom: 20px;
+  box-shadow: inset 0px 2px 3px rgba( 0,0,0,0.1 );
+  clear: both;
+}
+
+#auth .inputs input[type=username]:focus, input[type=email]:focus, input[type=password]:focus {
+  background: #fff;
+  box-shadow: 0px 0px 0px 3px #fff38e, inset 0px 2px 3px rgba( 0,0,0,0.2 ), 0px 5px 5px rgba( 0,0,0,0.15 );
+  outline: none;   
+}
+
+#auth .inputs .checkboxy {
+  display: block;
+  position: static;
+  height: 25px;
+  margin-top: 10px;
+  clear: both;
+}
+
+#auth .inputs input[type=checkbox] {
+  float: left;
+  margin-right: 10px;
+  margin-top: 3px;
+}
+
+#auth .inputs label.terms {
+  float: left;
+  font-size: 14px;
+  font-style: italic;
+}
+
+#auth .inputs #save {
+  width: 100%;
+  margin-top: 20px;
+  padding: 15px 0;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-align: center;
+  text-decoration: none;
+      background: -moz-linear-gradient(
+      top,
+      #b9c5dd 0%,
+      #a4b0cb);
+  background: -webkit-gradient(
+      linear, left top, left bottom, 
+      from(#b9c5dd),
+      to(#a4b0cb));
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #737b8d;
+  -moz-box-shadow:
+      0px 5px 5px rgba(000,000,000,0.1),
+      inset 0px 1px 0px rgba(255,255,255,0.5);
+  -webkit-box-shadow:
+      0px 5px 5px rgba(000,000,000,0.1),
+      inset 0px 1px 0px rgba(255,255,255,0.5);
+  box-shadow:
+      0px 5px 5px rgba(000,000,000,0.1),
+      inset 0px 1px 0px rgba(255,255,255,0.5);
+  text-shadow:
+      0px 1px 3px rgba(000,000,000,0.3),
+      0px 0px 0px rgba(255,255,255,0);
+  display: table;
+  position: static;
+  clear: both;
+}
+
+#auth .inputs #save:hover {
+  background: -moz-linear-gradient(
+      top,
+      #a4b0cb 0%,
+      #b9c5dd);
+  background: -webkit-gradient(
+      linear, left top, left bottom, 
+      from(#a4b0cb),
+      to(#b9c5dd));
+}
+
+
+/* TITLE STYLE 1*/
+/* 
+.title {
+  font-family: 'Six Caps', sans-serif;
+  font-size: 50px;
+  letter-spacing: 10px;
+  line-height: 1;
+  margin: 0;
+  position: relative;
+  
+}
+
+.title__top {
+  background: linear-gradient(rgb(240, 220, 200), rgb(230, 200, 160));
+  -webkit-background-clip: text;
+  background-clip: text;
+  position: absolute;
+  z-index: 1;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
+.title__bot {
+  text-shadow: 
+    2px 1px rgb(85, 10, 0),
+    4px 2px rgb(90, 15, 5),
+    6px 4px rgb(100, 20, 15),
+    8px 5px rgb(105, 25, 20),
+    10px 6px rgb(110, 30, 25),
+    12px 7px rgb(115, 30, 30),
+    14px 8px rgb(120, 30, 35),
+    16px 9px black,
+    18px 10px black,
+    20px 11px black,
+    22px 12px black,
+    24px 13px black,
+    28px 14px rgba(0, 0, 0, 0.9),
+    30px 15px rgba(0, 0, 0, 0.7),
+    32px 16px rgba(0, 0, 0, 0.5),
+    34px 17px rgba(0, 0, 0, 0.3),
+    36px 18px rgba(0, 0, 0, 0.1),
+    40px 20px rgba(0, 0, 0, 0.1);
+} */
+
+
+  /* TITLE STYLE 3
+
+@import url(https://fonts.googleapis.com/css?family=Oswald:400|Open+Sans:700);
+
+@import url(http://weloveiconfonts.com/api/?family=fontawesome); */
+
+/* fontawesome */
+/* [class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+body {
+  background: #e6e6d8 url('https://dl.dropboxusercontent.com/s/t0gu051d08sei65/bg-retro-noise.png');
+  color: #121212;
+}
+
+section.title {
+  position: absolute;
+  width: 100%;
+  min-width: 800px;
+  text-align: center;
+  top: 50%;
+  margin-top: -55px;
+}
+
+h1, h3 {
+  transform: matrix(1, -0.20, 0, 1, 0, 0);
+  -ms-transform: matrix(1, -0.20, 0, 1, 0, 0);
+  -webkit-transform: matrix(1, -0.20, 0, 1, 0, 0);
+}
+
+h1 {
+  font-family: "Oswald", Sans-serif;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 70px;
+  text-shadow: 4px 5px #e6e6d8, 6px 7px #c6a39a;
+}
+
+h1 span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+span.star {
+  font-size: 20px;
+}
+
+h3 {
+  font-family: "Open Sans", Sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;  
+  position: relative;
+}
+
+h3:before, h3:after {
+  content: " ";
+  position: absolute;
+  width: 100px;
+  height: 4px;
+  border-top: 2px solid #121212;
+  border-bottom: 2px solid #121212;
+}
+
+h3:before {
+  margin: 5px 0 0 -110px;
+}
+
+h3:after {
+  margin: 5px 0 0 10px;
+} */

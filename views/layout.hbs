@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="/styles/style.css">
 </head>
 <body>
-    <nav>
+
+    <ul>
         <div id="topNavBar">
-        <a href="/">Home</a>
-        <a href="/ingredientlist">Ingredients</a>
-        <a href="/liquorlist">Liquors</a>
-        <a href="/drinklist">Drinks</a>
+        <li><a href="/">Home</a></li>
+        <li><a href="/ingredientlist">Ingredients</a></li>
+        <li><a href="/liquorlist">Liquors</a></li>
+        <li><a href="/drinklist">Drinks</a></li>
         </div>
 
         <br>
@@ -21,8 +22,8 @@
 
         {{#unless theUser}}
         <div id="loggedOutBottomNavBar"></div>
-        <a href="/signup">Sign Up</a>
-        <a href="/login">Login</a>
+        <li><a href="/signup">Sign Up</a></li>
+        <li><a href="/login">Login</a></li>
         </div>
         {{/unless}}
 
@@ -42,7 +43,7 @@
         {{/if}}
 
 
-    </nav>
+    </ul>
 
 
     {{#if errorMessage}}
@@ -63,5 +64,6 @@
 
     <script src="/scripts/script.js"></script>
     <script src="/scripts/drinkDOM.js"></script>
+    
 </body>
 </html>
