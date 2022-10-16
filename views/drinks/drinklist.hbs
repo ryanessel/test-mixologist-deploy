@@ -1,14 +1,7 @@
 <h2>Cocktail<span>LIST</span></h2>
-<br>
-
-
-{{#if theUser}}
-<a href="/createdrink">Create Drink</a>
-{{/if}} 
-
-<br><br>
 
 <div class="tab">
+  <center>
     <button class="tablinks" onclick="openDrink(event, 'Vodka')">Vodka</button>
     <button class="tablinks" onclick="openDrink(event, 'Tequila')">Tequila</button>
     <button class="tablinks" onclick="openDrink(event, 'Gin')">Gin</button>
@@ -18,6 +11,10 @@
     <button class="tablinks" onclick="openDrink(event, 'Other')">Other</button>
     <button class="tablinks" onclick="openDrink(event, 'Shots')">Shots</button>
     <button class="tablinks" onclick="openDrink(event, 'Mocktails')">Mocktails</button>
+    {{#if theUser}}
+    <button class="tablinks" ><a href="/createdrink">Create Drink</a></button>
+    {{/if}} 
+    </center>
 </div>
 
 {{#each drink}}

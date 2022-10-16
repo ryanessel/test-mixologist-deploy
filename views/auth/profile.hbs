@@ -1,32 +1,40 @@
+
 <h2>My Bar<span>Welcome back {{theUser.username}}</span></h2>
 <br>
 
-<h5>Linked email: {{theUser.email}}</h5>
+ <div class="container">
 
+<div class="profile-photo">
 {{#if theUser.image}}
 <img src="{{theUser.image}}" alt="" class="profileImgMedium">
 {{/if}}
 {{#unless theUser.image}}
 <img src='/images/noProfileImage.png' alt="" class="profileImgMedium">
 {{/unless}}
+</div>
+
+<div class="profile-name">{{theUser.username}}
+    </div>
+    <h4>Liked Cocktails:</h4>
+    <h4>Linked email: {{theUser.email}}</h4>  
+</div>
 
 
-<form action="/update-profile-image" method="post" enctype="multipart/form-data">
+
+<form class="update-btn"action="/update-profile-image" method="post" enctype="multipart/form-data">
 <div>
     <input type="file" name="profileIMG" accept="image/png, image/gif, image/jpeg">
 </div>
 <button>Update Image</button>
 </form>
 
-<br>
-<h4>Liked Cocktails:</h4>
-
 <div>
 
 </div>
-<br>
-<br>
-<footer>
+
+</div>
+
+<footer class="settings-btn">
     <h4>Settings</h4>
     <select name="settingsList" id="settingsList" onchange="location = this.value;">
         <option value="" selected disabled hidden>Select an Option</option>

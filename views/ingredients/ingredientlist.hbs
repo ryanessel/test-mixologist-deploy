@@ -1,20 +1,20 @@
 <h2>Ingredient<span>LIST</span></h2>
-<br>
-
-{{#if theUser}}
-<a href="/createingredient">Create Ingredient</a>
-{{/if}} 
 
 <div class="tab">
-  <button class="tablinks" onclick="openIngredient(event, 'Syrups')">Syrups</button>
-  <button class="tablinks" onclick="openIngredient(event, 'Fruits')">Fruits</button>
-  <button class="tablinks" onclick="openIngredient(event, 'Carbonated Mixers')">Carbonated Mixers</button>
-  <button class="tablinks" onclick="openIngredient(event, 'Juices')">Juices</button>
- <button class="tablinks" onclick="openIngredient(event, 'Bitters')">Bitters</button>
- <button class="tablinks" onclick="openIngredient(event, 'Dairy Mixers')">Dairy Mixers</button>
- <button class="tablinks" onclick="openIngredient(event, 'Caffeinated Mixers')">Caffeinated Mixers</button>
- <button class="tablinks" onclick="openIngredient(event, 'Sauces')">Sauces</button>
- <button class="tablinks" onclick="openIngredient(event, 'Prepared Mixes')">Prepared Mixes</button>
+  <center>
+    <button class="tablinks" onclick="openIngredient(event, 'Syrups')">Syrups</button>
+    <button class="tablinks" onclick="openIngredient(event, 'Fruits')">Fruits</button>
+    <button class="tablinks" onclick="openIngredient(event, 'Carbonated Mixers')">Carbonated Mixers</button>
+    <button class="tablinks" onclick="openIngredient(event, 'Juices')">Juices</button>
+    <button class="tablinks" onclick="openIngredient(event, 'Bitters')">Bitters</button>
+    <button class="tablinks" onclick="openIngredient(event, 'Dairy Mixers')">Dairy Mixers</button>
+    <button class="tablinks" onclick="openIngredient(event, 'Caffeinated Mixers')">Caffeinated Mixers</button>
+    <button class="tablinks" onclick="openIngredient(event, 'Sauces')">Sauces</button>
+    <button class="tablinks" onclick="openIngredient(event, 'Prepared Mixes')">Prepared Mixes</button>
+    {{#if theUser}}
+    <button class="tablinks" ><a href="/createingredient">Create Ingredient</a></button>
+    {{/if}} 
+</center>
 </div>
 
 {{#each ing}}

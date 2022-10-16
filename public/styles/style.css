@@ -1,18 +1,9 @@
-#profileSmallImg{
-    height: 2vw;
-    width: auto;
-}
-
-.profileImgMedium{
-    height: 10vw;
-    width: auto;
-}
-
 /* Style the tab */
 .tab {
     overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
+    border: 1px solid rgb(188, 157, 120);
+    background-color: bisque;
+    opacity: .85;
   }
   
   /* Style the buttons that are used to open the tab content */
@@ -28,21 +19,21 @@
   
   /* Change background color of buttons on hover */
   .tab button:hover {
-    background-color: #ddd;
+    background-color: rgb(188, 157, 120);
   }
   
   /* Create an active/current tablink class */
   .tab button.active {
-    background-color: #ccc;
+    background-color: rgb(188, 157, 120);
   }
   
   /*Style the tab content */
   .tabcontent {
     display: none;
     padding: 6px 12px;
-    border: 1px solid #ccc;
+    border: 1px solid rgb(188, 157, 120);
     border-top: none;
-   }
+  }
 
    h1{
     margin-bottom: 0px;
@@ -147,32 +138,26 @@ a:active { text-decoration: none; }
 }
 
 /* BACKGROUND OF HOME PAGE */
-.index-container {
-  background-image: url("/images/blurredBackground.webp");
- /* background-image: url("/images/liquorBottles.jpeg"); */
- width:100%;
- height:100%; 
- background-size:cover;background-repeat:no-repeat;background-position:center center;background-attachment: fixed;
-}
-
 body, html {
    height: 100%;
    margin: 0;
+   background-image: url("/images/blurredBackground.webp");background-size:cover;background-repeat:no-repeat;background-position:center center;background-attachment: fixed;
+ 
 }
 
 /* TITLE STYLE */
-/*
+
 @import url('http://fonts.cdnfonts.com/css/mislian');
 
   .title{
     position: absolute;
-    bottom: 0;
     left: 0;
     width: 100%;
-    padding: 20px 10px;
+    padding: 0px 10px;
     background: inherit;
     background-attachment: fixed;
   }
+
   .title::before {
     content: "";
     position:absolute;
@@ -292,6 +277,7 @@ h2 span:after, h2 span:before {
     height: 5px;
   background-color:transparent;
 }
+
 /*SIGN UP */
 .auth-container{
   width: 406px;
@@ -443,3 +429,57 @@ input:-moz-placeholder {
 
 
 /*PROFILE STYLING*/
+.container{
+  user-select: none;
+  margin: 50px auto;
+  background: bisque;
+  color: rgba(138, 14, 14, 0.747);
+  border-radius: 5px;
+  width: 350px;
+  height: 470px;
+  text-align: center;
+  box-shadow: 0 10px 20px -10px rgba(0,0,0,.75);opacity: 0.85;
+}
+.profile-photo{
+  height: 160px;
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+}
+
+.profileImgMedium{
+  border-radius: 50%;
+  margin: 10px;  
+  height: 10vw;
+  width: auto;
+}
+
+#profileSmallImg{
+  border-radius: 50%;
+  margin: -8px;
+  padding-left: 11px; 
+  height: 2vw;
+  width: auto;
+}
+
+.profile-name{
+  display: flex;
+  font-size: 25px;
+  font-weight: bold;
+  margin: 56px 0 0 140px;
+}
+
+
+.update-btn, .settings-btn{
+  display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: row;
+  
+    background: bisque;
+    opacity: .85;
+    padding: 22px;
+}
+
+.settings-btn > h4{
+  padding: 10px;
+}
