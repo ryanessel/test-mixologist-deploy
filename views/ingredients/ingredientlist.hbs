@@ -1,7 +1,10 @@
-<h2>Ingredient<span>LIST</span></h2>
+<h2 class="topPage">Ingredient<span>LIST</span></h2>
 
 <div class="tab">
   <center>
+    {{#if theUser}}
+    <button class="tablinks" ><a href="/createingredient">Create Ingredient</a></button>
+    {{/if}}
     <button class="tablinks" onclick="openIngredient(event, 'Syrups')">Syrups</button>
     <button class="tablinks" onclick="openIngredient(event, 'Fruits')">Fruits</button>
     <button class="tablinks" onclick="openIngredient(event, 'Carbonated Mixers')">Carbonated Mixers</button>
@@ -10,10 +13,7 @@
     <button class="tablinks" onclick="openIngredient(event, 'Dairy Mixers')">Dairy Mixers</button>
     <button class="tablinks" onclick="openIngredient(event, 'Caffeinated Mixers')">Caffeinated Mixers</button>
     <button class="tablinks" onclick="openIngredient(event, 'Sauces')">Sauces</button>
-    <button class="tablinks" onclick="openIngredient(event, 'Prepared Mixes')">Prepared Mixes</button>
-    {{#if theUser}}
-    <button class="tablinks" ><a href="/createingredient">Create Ingredient</a></button>
-    {{/if}} 
+    <button class="tablinks" onclick="openIngredient(event, 'Prepared Mixes')">Prepared Mixes</button> 
 </center>
 </div>
 
