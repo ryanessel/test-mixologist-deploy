@@ -35,10 +35,10 @@
         {{#if theUser}}
         <div id="loggedInBottomNavBar"></div>
         {{#if theUser.image}}
-        <a href="/profile">Profile <img src={{theUser.image}} alt="FAIL" id="profileSmallImg"></a>
+        <a href="/profile">Profile</a> <img src={{theUser.image}} alt="FAIL" id="profileSmallImg">
         {{/if}}
         {{#unless theUser.image}}
-        <a href="/profile">Profile <img src='/images/noProfileImage.png' alt="FAIL" id="profileSmallImg"></a>
+        <a href="/profile">Profile</a> <img src='/images/noProfileImage.png' alt="FAIL" id="profileSmallImg">
         {{/unless}}
         <form id="logout" action="/logout" method="post">
         <a href='#' onclick="logoutButton()">Logout</a>

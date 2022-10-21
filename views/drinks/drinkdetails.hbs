@@ -1,7 +1,7 @@
-<h2 class="topPage">Drink Details</h2>
-<div>
+<h2 class="topPage">Drink<span>Details</span></h2>
+<div class = "details">
     <h4>Cocktail Name: {{drink.name}}</h4>
-    <h4>Picture: <img src="{{drink.image}}" alt=""></h4>
+    <h4>Picture: <br><img class ="details-photo" src="{{drink.image}}" alt=""></h4>
     <h4>Liquors: {{#each drink.liquor}}{{this.liquorObject.name}}, {{/each}}</h4>
     <h4>Ingredients: {{#each drink.ingredient}}{{this.ingredientObject.name}}, {{/each}}</h4>
     <h4>Tools Needed: {{#each drink.tool}} {{this.toolObj}}, {{/each}}</h4>
@@ -11,7 +11,7 @@
     <h4>Website to purchase: <a href="{{drink.url}}">Click Here!</a></h4>
     <h4>Price: 0
     <h4>Like Count: {{drink.likeCount}}</h4>
-</div>
+
 
 {{#if theUser}}
         <a class="edit" href="/drinks/{{drink._id}}/edit">Edit</a>
@@ -22,3 +22,4 @@
         </form>
 
 {{/if}}
+</div>
