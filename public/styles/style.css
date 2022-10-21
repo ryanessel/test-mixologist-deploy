@@ -203,6 +203,7 @@ a:active { text-decoration: none; }
   overflow: hidden;
   margin: 0;
   padding: 0;
+  justify-content: space-between;
 }
 
 ul {
@@ -445,10 +446,11 @@ input:-moz-placeholder {
 
 #profileSmallImg{
   border-radius: 50%;
-  margin: -8px;
-  padding-left: 11px; 
+  display: flex;
   height: 2vw;
   width: auto;
+  align-content: space-between;
+  flex-wrap: nowrap;
 }
 
 .profile-name{
@@ -475,4 +477,53 @@ input:-moz-placeholder {
 
 .settings-btn > h4{
   padding: 10px;
+}
+
+/*DEATIL VIEW STYLING*/
+
+.details {
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  margin: 50px auto;
+  background: bisque;
+  color: rgba(138, 14, 14, 0.747);
+  border-radius: 5px;
+  width: 350px;
+  padding-bottom: 10px;
+  text-align: center;
+  box-shadow: 0 10px 20px -10px rgb(0 0 0 / 75%);
+  opacity: 0.85;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.details-photo{
+  border-radius: 25px;
+  margin-top: 25px;  
+  height: 10vw;
+  width: auto;
+}
+
+/*CREATE VIEW STYLING*/
+.create {
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  margin: 50px auto;
+  background: bisque;
+  color: rgba(138, 14, 14, 0.747);
+  border-radius: 5px;
+  width: 350px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  text-align: center;
+  box-shadow: 0 10px 20px -10px rgb(0 0 0 / 75%);
+  opacity: 0.85;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
 }
