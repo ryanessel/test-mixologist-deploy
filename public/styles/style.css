@@ -204,10 +204,9 @@ a:active { text-decoration: none; }
   margin: 0;
   padding: 0;
   justify-content: space-between;
-}
-
-ul {
   background-color: #FFEBCD; opacity: .75; filter: alpha;
+  align-content: center;
+  justify-content: space-evenly;
 }
 
 li {
@@ -235,6 +234,26 @@ ul > a {
 li a:hover {
   background-color: #FFA07A;
   opacity: 1.0;
+}
+
+#loggedOutBottomNavBar{
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  padding-left: 70vw;
+}
+
+#loggedInBottomNavBar{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  padding-left: 58vw;
 }
 
 
