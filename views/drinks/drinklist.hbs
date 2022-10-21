@@ -17,9 +17,17 @@
     </center>
 </div>
 
+<div class="listOver">
 {{#each drink}}
-  <div>
-    <p>Name: {{this.name}}</p>
-    <p><a href="/drinkdetails/{{this.id}}">Click Here for Details</a></p>
+<a href="/drinkdetails/{{this.id}}">
+  <div class="itemBox">
+    <div class="listName">
+    <h1>{{this.name}}</h1>
+    </div>
+    <div class="listImage">
+    <img src="{{this.image}}" alt="" class="imageList">
+    </div>
   </div>
+</a>
 {{/each}}
+</div>

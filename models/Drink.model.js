@@ -11,6 +11,9 @@ const drinkSchema = new Schema({
             },
             quantity:{
                 type: String
+            },
+            htmlID:{
+                type:String
             }
           }],
 
@@ -22,14 +25,29 @@ const drinkSchema = new Schema({
         }, 
         quantity:{
             type: Number
+        },
+        htmlID:{
+            type:String
         }
         }],
-    glasswear: {
-        type: [],
-    },
-    tools: {
-        type: [],
-    },
+    glasswear: 
+        [{
+            glasswearObj:{
+                type:String
+            },
+            htmlID:{
+                type:String
+            }
+    }],
+    tool: 
+    [{
+        toolObj:{
+            type:String
+        },
+        htmlID:{
+            type:String
+        }
+    }],
     likeCount: Number,
     instructions: String,
     description: String,

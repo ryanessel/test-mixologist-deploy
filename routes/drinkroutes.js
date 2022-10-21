@@ -34,19 +34,19 @@ router.post('/createdrink',uploadSys.single('drinkIMG'), (req, res, next)=>{
     let glassArray = []
 
     for (i=0;i<req.body.ingN;i++){
-        ingArray.push({ingredientObject: req.body[`ingObj${i}`], quantity:req.body[`ingQnt${i}`]})
+        ingArray.push({ingredientObject: req.body[`ingObj${i}`], quantity:req.body[`ingQnt${i}`], htmlID:req.body[`ingHtmlID${i}`]})
     }
 
     for (i=0;i<req.body.liqN;i++){
-        liqArray.push({liquorObject: req.body[`liqObj${i}`], quantity:req.body[`liqQnt${i}`]})
+        liqArray.push({liquorObject: req.body[`liqObj${i}`], quantity:req.body[`liqQnt${i}`], htmlID:req.body[`liqHtmlID${i}`]})
     }
 
     for (i=0;i<req.body.toolN;i++){
-        toolArray.push(req.body[`toolObj${i}`])
+        toolArray.push({toolObj:req.body[`toolObj${i}`],htmlID:req.body[`toolHtmlID${i}`]})
     }
 
     for (i=0;i<req.body.glassN;i++){
-        glassArray.push(req.body[`glassObj${i}`])
+        glassArray.push({glasswearObj:req.body[`glassObj${i}`],htmlID:req.body[`glassHtmlID${i}`]})
     }
 
     let img
@@ -56,7 +56,6 @@ router.post('/createdrink',uploadSys.single('drinkIMG'), (req, res, next)=>{
        img = req.file.path
     };
 
-    
     Drinks.create({
             name: req.body.name
             ,instructions: req.body.instructions
@@ -66,7 +65,7 @@ router.post('/createdrink',uploadSys.single('drinkIMG'), (req, res, next)=>{
             ,tags: req.body.tags
             ,ingredient: ingArray
             ,liquor: liqArray
-            ,tools: toolArray
+            ,tool: toolArray
             ,glasswear: glassArray
             ,likeCount: 0 
         }).then((createdDrink) => {
@@ -110,30 +109,70 @@ router.post('/drinks/:id/delete', (req, res, next)=>{
 router.get('/drinks/:id/edit', (req, res, next) => {
     Drinks.findById(req.params.id).populate([{model:'Ingredient', path:'ingredient.ingredientObject'},{model:'Liquor', path:'liquor.liquorObject'}])
     .then(drinksFromDb => {
-        console.log(drinksFromDb);
-        res.render('drinks/editdrink', {drink:drinksFromDb});
+        Ingredient.find()
+        .then((resultIng)=>{
+        Liquor.find()
+        .then((resultLiq)=>{
+            res.render('drinks/editdrink', {drink:drinksFromDb, ing: resultIng, liquor: resultLiq});
+        })
+    });
 }).catch(err => {console.log({err})});
 })
 
-router.post('/drinks/:id/edit', (req, res, next)=>{
-    Drinks.findByIdAndUpdate(req.params.id, {
-        name: req.body.name
+router.post('/drinks/:id/edit',uploadSys.single('drinkIMG'), (req, res, next)=>{
+
+    let ingArray = []
+    let liqArray = []
+    let toolArray = []
+    let glassArray = []
+
+    for (i=0;i<req.body.ingN;i++){
+        ingArray.push({ingredientObject: req.body[`ingObj${i}`], quantity:req.body[`ingQnt${i}`], htmlID:req.body[`ingHtmlID${i}`]})
+    }
+
+    for (i=0;i<req.body.liqN;i++){
+        liqArray.push({liquorObject: req.body[`liqObj${i}`], quantity:req.body[`liqQnt${i}`], htmlID:req.body[`liqHtmlID${i}`]})
+    }
+
+    for (i=0;i<req.body.toolN;i++){
+        toolArray.push({toolObj:req.body[`toolObj${i}`],htmlID:req.body[`toolHtmlID${i}`]})
+    }
+
+    for (i=0;i<req.body.glassN;i++){
+        glassArray.push({glasswearObj:req.body[`glassObj${i}`],htmlID:req.body[`glassHtmlID${i}`]})
+    }
+
+    Drinks.findById(req.params.id)
+    .then((result)=>{
+        let img
+        if(typeof req.file == 'undefined'){
+            img = result.img
+        } else {
+           img = req.file.path
+        };
+
+        Drinks.findByIdAndUpdate(req.params.id, {
+            name: req.body.name
             ,instructions: req.body.instructions
-            // ,quantity: req.body.quantity
             ,description: req.body.description
             ,url: req.body.url
-            // ,price: req.body.price
             ,image: img
             ,tags: req.body.tags
-        
-    }).then((response)=>{
-        
-        res.redirect('/createdrink');
+            ,ingredient: ingArray
+            ,liquor: liqArray
+            ,tool: toolArray
+            ,glasswear: glassArray
+            ,likeCount: 0 
+            
+        }).then((response)=>{
 
-    }).catch((err)=>{
-        console.log(err);
+            res.redirect(`/drinkdetails/${req.params.id}`);
+
+        }).catch((err)=>{
+            console.log(err);
+        })
     })
-
+    
 });
 
 //----------------------------- CANCEL DRINKS ROUTE

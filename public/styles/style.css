@@ -476,3 +476,51 @@ input:-moz-placeholder {
 .settings-btn > h4{
   padding: 10px;
 }
+
+.listOver{
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+}
+
+.itemBox{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3vw;
+  margin: 2vw;
+  width: 10vw;
+  height: 10vw;
+  background-color: lightsalmon;
+   border-radius: 25px;
+  color: black;
+}
+
+.listName h1{
+  margin: 0;
+  padding: 0;
+}
+
+.listName{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5vw;
+  height: 5vw;
+  margin-bottom: 0.8vw;
+}
+
+.listImage{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5vw;
+  height: 5vw;
+}
+
+.imageList{
+  width: 5vw;
+  height: 5vw;
+  border-radius: 25px;
+}

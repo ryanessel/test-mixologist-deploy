@@ -4,8 +4,8 @@
     <h4>Picture: <img src="{{drink.image}}" alt=""></h4>
     <h4>Liquors: {{#each drink.liquor}}{{this.liquorObject.name}}, {{/each}}</h4>
     <h4>Ingredients: {{#each drink.ingredient}}{{this.ingredientObject.name}}, {{/each}}</h4>
-    <h4>Tools Needed: {{#each drink.tools}} {{this}}, {{/each}}</h4>
-    <h4>Glasswear: {{#each drink.glasswear}} {{this}}, {{/each}}</h4>
+    <h4>Tools Needed: {{#each drink.tool}} {{this.toolObj}}, {{/each}}</h4>
+    <h4>Glasswear: {{#each drink.glasswear}} {{this.glasswearObj}}, {{/each}}</h4>
     <h4>Instructions: {{drink.instructions}}</h4>
     <h4>Description: {{drink.description}}</h4>
     <h4>Website to purchase: <a href="{{drink.url}}">Click Here!</a></h4>

@@ -5,20 +5,31 @@
     {{#if theUser}}
     <button class="tablinks"><a href="/createliquor">Create Liquor</a></button>
     {{/if}} 
-    <button class="tablinks" onclick="openDrink(event, 'Vodka')">Vodka</button>
-    <button class="tablinks" onclick="openDrink(event, 'Tequila')">Tequila</button>
-    <button class="tablinks" onclick="openDrink(event, 'Gin')">Gin</button>
-    <button class="tablinks" onclick="openDrink(event, 'Rum')">Rum</button>
-    <button class="tablinks" onclick="openDrink(event, 'Whiskey')">Whiskey</button>
-    <button class="tablinks" onclick="openDrink(event, 'Brandy')">Brandy</button>
-    <button class="tablinks" onclick="openDrink(event, 'Other')">Other</button>
+    <button class="tablinks" onclick="filterList('liquor', 'Vodka')">Vodka</button>
+    <button class="tablinks" onclick="filterList('liquor', 'Tequila')">Tequila</button>
+    <button class="tablinks" onclick="filterList('liquor', 'Gin')">Gin</button>
+    <button class="tablinks" onclick="filterList('liquor', 'Rum')">Rum</button>
+    <button class="tablinks" onclick="filterList('liquor', 'Whiskey')">Whiskey</button>
+    <button class="tablinks" onclick="filterList('liquor', 'Brandy')">Brandy</button>
+    <button class="tablinks" onclick="filterList('liquor', 'Other')">Other</button>
   </center>
 </div>
 
+<div id="tableInsert">
+
+<div class="listOver">
 {{#each liquor}}
-  <div>
-    <p>Brand: {{this.brand}}</p>
-    <p>Type: {{this.type}}</p>
-    <p><a href="/liquordetails/{{this.id}}">Click Here for Details</a></p>
- </div>
+<a href="/liquordetails/{{this.id}}">
+  <div class="itemBox">
+    <div class="listName">
+    <h1>{{this.name}}</h1>
+    </div>
+    <div class="listImage">
+    <img src="{{this.image}}" alt="" class="imageList">
+    </div>
+  </div>
+</a>
 {{/each}}
+</div>
+
+</div>

@@ -15,6 +15,7 @@
             <th>Name</th>
             <th>Quantity</th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
 <tbody id="liquorTable">
@@ -45,6 +46,9 @@
         <td>
             <a href="#" onclick="addLiqLine('liquorTable')">Add Liquor</a>
         </td>
+        <td class="htmlIDColumn">
+            <input type="text" name="" value="" style="display: none;">
+        </td>
     </tr>
 </tbody>
 </table>
@@ -58,6 +62,7 @@
             <th>Name</th>
             <th>Quantity</th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
 <tbody id="ingredientTable">
@@ -69,12 +74,12 @@
                 <option value="Fruit">Fruit</option>
                 <option value="Carbonated mixers">Carbonated mixers</option>
                 <option value="Juice">Juice</option>
-                <option value="Bitters">Bitters</option>
+                <option value="Bitter">Bitter</option>
                 <option value="Garnish">Garnish</option>
                 <option value="Dairy">Dairy</option>
-                <option value="Caffeinated beverages">Caffeinated beverages</option>
-                <option value="Sauces">Sauces</option>
-                <option value="Prepared mixes">Prepared mixes</option>
+                <option value="Caffeinated beverage">Caffeinated beverage</option>
+                <option value="Sauce">Sauces</option>
+                <option value="Prepared mix">Prepared mix</option>
             </select>
         </td>
         <td>
@@ -91,6 +96,9 @@
         <td>
             <a href="#" onclick="addIngLine('ingredientTable')">Add Ingredient</a>
         </td>
+        <td class="htmlIDColumn">
+            <input type="text" name="" value="" style="display: none;">
+        </td>
     </tr>
 </tbody>
 </table>
@@ -99,6 +107,7 @@
 <label>Tools Needed</label> 
 <table>
     <thead>
+        <th></th>
         <th></th>
         <th></th>
     </thead>
@@ -119,6 +128,9 @@
             <td>
                <a href="#" onclick="addToolLine('toolTable')">Add Tool</a> 
             </td>
+            <td class="htmlIDColumn">
+                <input type="text" name="" value="" style="display: none;">
+            </td>
         </tr>
     </tbody>
 </table>
@@ -127,6 +139,7 @@
 <label>Glasswear</label> 
 <table>
     <thead>
+        <th></th>
         <th></th>
         <th></th>
     </thead>
@@ -154,6 +167,9 @@
             </td>
             <td>
                <a href="#" onclick="addGlassLine('glassTable')">Add Tool</a> 
+            </td>
+            <td class="htmlIDColumn">
+                <input type="text" name="" value="" style="display: none;">
             </td>
         </tr>
     </tbody>

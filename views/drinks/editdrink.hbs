@@ -1,6 +1,6 @@
 <h2 class="topPage">Create Drink</h2>
 
-<form action="/createdrink" method="post" enctype="multipart/form-data">
+<form action="/drinks/{{drink._id}}/edit" method="post" enctype="multipart/form-data">
 
 <label for="name">Cocktail Name
     <input type="text" name="name" value="{{drink.name}}">
@@ -14,6 +14,7 @@
             <th>Type</th>
             <th>Name</th>
             <th>Quantity</th>
+            <th></th>
             <th></th>
         </tr>
     </thead>
@@ -34,9 +35,9 @@
         <td>
             <select name="liqSelect" id="liqSelect">
                 <option value="" selected disabled hidden></option>
-    {{!-- {{#each }} --}}
-        <option value ="{{drink.name}}">{{drink.name}}</option>
-    {{!-- {{/each}} --}}
+        {{#each liquor}}
+            <option value ="{{this._id}}">{{this.name}}</option>
+        {{/each}}
             </select>
         </td>
         <td>
@@ -47,22 +48,25 @@
         </td>
     </tr>
     {{#each drink.liquor}}
-    <tr id="{{this.liquorObject.name}}">
+    <tr id="recordLiq{{this.htmlID}}" class="liqRecord">
         <td class="typeColumn">
             <select disabled>
             <option value="">{{this.liquorObject.type}}</option>
             </select>
         </td>
         <td class="liqColumn" >
-            <select name="{{this.liquorObject.name}}">
+            <select name="liqObj{{this.htmlID}}">
             <option value="{{this.liquorObject._id}}">{{this.liquorObject.name}}</option>
             </select>
         </td>
         <td class="quantityColumn">
-            <input type="text" name="{{this.quantity}}" value="{{this.quantity}}">
+            <input type="text" name="liqQtn{{this.htmlID}}" value="{{this.quantity}}">
         </td>
         <td class="actionColumn">
-            <a href="#" onclick="removeLine('{{this.liquorObject.name}}')" class="btn-remove">Remove</a>
+            <a href="#" onclick="removeLine('recordLiq{{this.htmlID}}')" class="btn-remove">Remove</a>
+        </td>
+        <td class="htmlIDColumn">
+            <input type="text" name="liqHtmlID{{this.htmlID}}" value="{{this.htmlID}}" style="display: none;">
         </td>
     </tr>
     {{/each}}
@@ -78,6 +82,7 @@
             <th>Name</th>
             <th>Quantity</th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
 <tbody id="ingredientTable">
@@ -87,14 +92,14 @@
                 <option value="" selected disabled hidden></option>
                 <option value="Syrup">Syrup</option>
                 <option value="Fruit">Fruit</option>
-                <option value="Carbonated mixers">Carbonated mixers</option>
+                <option value="Carbonated mixer">Carbonated mixer</option>
                 <option value="Juice">Juice</option>
-                <option value="Bitters">Bitters</option>
+                <option value="Bitter">Bitter</option>
                 <option value="Garnish">Garnish</option>
                 <option value="Dairy">Dairy</option>
-                <option value="Caffeinated beverages">Caffeinated beverages</option>
-                <option value="Sauces">Sauces</option>
-                <option value="Prepared mixes">Prepared mixes</option>
+                <option value="Caffeinated beverage">Caffeinated beverage</option>
+                <option value="Sauce">Sauce</option>
+                <option value="Prepared mix">Prepared mix</option>
             </select>
         </td>
         <td>
@@ -113,22 +118,25 @@
         </td>
     </tr>
     {{#each drink.ingredient}}
-    <tr id="{{this.ingredientObject.name}}">
+    <tr id="recordIng{{this.htmlID}}" class="ingRecord">
         <td class="typeColumn">
             <select disabled>
             <option value="{{this.ingredientObject.type}}">{{this.ingredientObject.type}}</option>
             </select>
         </td>
         <td class="ingColumn">
-            <select name="{{this.ingredientObject.name}}">
+            <select name="ingObj{{this.htmlID}}">
             <option value="{{this.ingredientObject._id}}">{{this.ingredientObject.name}}</option>
             </select>
         </td>
         <td class="quantityColumn">
-            <input type="text" name="{{this.quantity}}" value="{{this.quantity}}">
+            <input type="text" name="ingQtn{{this.htmlID}}" value="{{this.quantity}}">
         </td>
         <td class="actionColumn">
-            <a href="#" onclick="removeLine('{{this.ingredientObject.name}}')" class="btn-remove">Remove</a>
+            <a href="#" onclick="removeLine('recordIng{{this.htmlID}}')" class="btn-remove">Remove</a>
+        </td>
+        <td class="htmlIDColumn">
+            <input type="text" name="ingHtmlID{{this.htmlID}}" value="{{this.htmlID}}" style="display: none;">
         </td>
     </tr>
     {{/each}}
@@ -139,6 +147,7 @@
 <label>Tools Needed</label> 
 <table>
     <thead>
+        <th></th>
         <th></th>
         <th></th>
     </thead>
@@ -159,15 +168,18 @@
             <td>
                <a href="#" onclick="addToolLine('toolTable')">Add Tool</a> 
             </td>
+            <td class="htmlIDColumn">
+                <input type="text" name="toolHtmlID{{this.htmlID}}" value="{{this.htmlID}}" style="display: none;">
+            </td>
         </tr>
-        {{#each drink.tools}}
-        <tr id="{{this}}" class="toolRecord">
+        {{#each drink.tool}}
+        <tr id="recordTool{{this.htmlID}}" class="toolRecord">
               <td class="toolColumn" >
-                <select name="{{this}}">
-                <option value="{{this}}">{{this}}</option>
+                <select name="toolObj{{this.htmlID}}">
+                <option value="{{this.toolObj}}">{{this.toolObj}}</option>
                 </select>
             <td class="actionColumn">
-                <a href="#" onclick="removeLine('{{this}}')" class="btn-remove">Remove</a>
+                <a href="#" onclick="removeLine('recordTool{{this.htmlID}}')" class="btn-remove">Remove</a>
             </td>
         </tr>
         {{/each}}
@@ -208,13 +220,16 @@
             </td>
         </tr>
         {{#each drink.glasswear}}
-        <tr id="{{this}}" class="glassRecord">
+        <tr id="recordGlass{{this.htmlID}}" class="glassRecord">
             <td class="glassColumn" >
-                <select name="{{this}}">
-                <option value="{{this}}">{{this}}</option>
+                <select name="glassObj{{this.htmlID}}">
+                <option value="{{this.glasswearObj}}">{{this.glasswearObj}}</option>
                 </select>
             <td class="actionColumn">
-                <a href="#" onclick="removeLine('{{this}}')" class="btn-remove">Remove</a>
+                <a href="#" onclick="removeLine('recordGlass${{this.htmlID}}')" class="btn-remove">Remove</a>
+            </td>
+            <td class="htmlIDColumn">
+                <input type="text" name="glassHtmlID{{this.htmlID}}" value="{{this.htmlID}}" style="display: none;">
             </td>
         </tr>
         {{/each}}

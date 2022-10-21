@@ -56,7 +56,8 @@ axios({
 
 // ------- Remove and Add line functions ------------- 
   function removeLine(recordID){
-    document.getElementById(`${recordID}`).remove()
+    document.getElementById(`${recordID}`).remove();
+    setN()
   }
 
 function addIngLine(tableName){
@@ -87,8 +88,12 @@ function addIngLine(tableName){
   </td>
   <td class="actionColumn">
     <a href="#" onclick="removeLine('recordIng${ingN}')" class="btn-remove">Remove</a>
+  </td>
+  <td class="htmlIDColumn">
+    <input type="text" name="ingHtmlID${ingN}" value="${ingN}" style="display: none;">
   </td>`
-  
+
+
   const newRow = document.createElement("tr");
   newRow.classList.add(`ingRecord`);
   newRow.setAttribute("id",`recordIng${ingN}`)
@@ -126,6 +131,9 @@ function addIngLine(tableName){
   </td>
   <td class="actionColumn">
     <a href="#" onclick="removeLine('recordLiq${liqN}')" class="btn-remove">Remove</a>
+  </td>
+  <td class="htmlIDColumn">
+    <input type="text" name="liqHtmlID${liqN}" value="${liqN}" style="display: none;">
   </td>`
   
   const newRow = document.createElement("tr");
@@ -152,6 +160,9 @@ function addIngLine(tableName){
     </select>
   <td class="actionColumn">
     <a href="#" onclick="removeLine('recordTool${toolN}')" class="btn-remove">Remove</a>
+  </td>
+  <td class="htmlIDColumn">
+    <input type="text" name="toolHtmlID${toolN}" value="${toolN}" style="display: none;">
   </td>`
   
   const newRow = document.createElement("tr");
@@ -176,6 +187,9 @@ function addIngLine(tableName){
     </select>
   <td class="actionColumn">
     <a href="#" onclick="removeLine('recordGlass${glassN}')" class="btn-remove">Remove</a>
+  </td>
+  <td class="htmlIDColumn">
+    <input type="text" name="glassHtmlID${glassN}" value="${glassN}" style="display: none;">
   </td>`
   
   const newRow = document.createElement("tr");
@@ -188,5 +202,35 @@ function addIngLine(tableName){
     
   setN()
   }
+
+  document.querySelector('#liqTypesSelect').addEventListener('change', (event) =>{
+    let filterList = liqObject.data.filter(res=>res.type === event.target.value)
+
+    document.querySelector('#liqSelect').innerHTML = ''
+    let htmlString = '<option value="" selected disabled hidden></option>'
+
+    for(i=0;filterList.length>i;i++){
+
+      htmlString += `
+      <option value ="${filterList[i]._id}">${filterList[i].name}</option>`
+     }
+     document.querySelector('#liqSelect').innerHTML = htmlString
+    console.log(filterList)
+  })
+
+  document.querySelector('#ingTypesSelect').addEventListener('change', (event) =>{
+    let filterList = ingObject.data.filter(res=>res.type === event.target.value)
+
+    document.querySelector('#ingSelect').innerHTML = ''
+    let htmlString = '<option value="" selected disabled hidden></option>'
+
+    for(i=0;filterList.length>i;i++){
+
+      htmlString += `
+      <option value ="${filterList[i]._id}">${filterList[i].name}</option>`
+     }
+     document.querySelector('#ingSelect').innerHTML = htmlString
+    console.log(filterList)
+  })
 
 

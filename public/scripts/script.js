@@ -8,23 +8,61 @@ function changeText() {
 }
 
 
-// function openIngredient(evt, ingredientName) {
-//     // Declare all variables
-//     let i, tabcontent, tablinks;
+axios({
+    method: 'GET',
+    url: 'http://localhost:3000/api/ingredients',
+    //params: 'URL parameters to be sent with the request'
+  })
+    .then(response => {
+      ingObject = response
+    })
+    .catch(err => {
+      console.log(err)
+    });
   
-//     // Get all elements with class="tabcontent" and hide them
-//     tabcontent = document.getElementsByClassName("tabcontent");
-//     for (i = 0; i < tabcontent.length; i++) {
-//       tabcontent[i].style.display = "none";
-//     }
-  
-//     // Get all elements with class="tablinks" and remove the class "active"
-//     tablinks = document.getElementsByClassName("tablinks");
-//     for (i = 0; i < tablinks.length; i++) {
-//       tablinks[i].className = tablinks[i].className.replace(" active", "");
-//     }
-  
-//     // Show the current tab, and add an "active" class to the button that opened the tab
-//     document.getElementById(ingredientName).style.display = "block";
-//     evt.currentTarget.className += " active";
-// }
+    axios({
+      method: 'GET',
+      url: 'http://localhost:3000/api/liquors',
+      //params: 'URL parameters to be sent with the request'
+    })
+      .then(response => {
+        liqObject = response
+      })
+      .catch(err => {
+        console.log(err)
+});
+
+function filterList(table, category){
+
+    document.querySelector(".listOver").innerHTML =''
+
+    let apiData
+    let htmlString = ''
+
+    if(table === 'ingredient'){
+        apiData = ingObject
+    } else if (table === 'liquor'){
+        apiData = liqObject
+    } else if (table === 'drink'){
+        console.log("would set apidata")
+    }
+
+    let ZapiData = apiData.data.filter(res=>res.type === category)
+
+    for(i=0;ZapiData.length>i;i++){
+
+     htmlString += `
+    <a href="/ingredientdetails/${ZapiData[i]._id}">
+    <div class="itemBox">
+      <div class="listName">
+      <h1>${ZapiData[i].name}</h1>
+      </div>
+      <div class="listImage">
+      <img src="${ZapiData[i].image}" alt="" class="imageList">
+      </div>
+    </div>
+  </a>`
+    }
+
+    document.querySelector(".listOver").innerHTML = htmlString
+}

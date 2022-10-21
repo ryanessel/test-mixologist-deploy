@@ -5,22 +5,33 @@
     {{#if theUser}}
     <button class="tablinks" ><a href="/createingredient">Create Ingredient</a></button>
     {{/if}}
-    <button class="tablinks" onclick="openIngredient(event, 'Syrups')">Syrups</button>
-    <button class="tablinks" onclick="openIngredient(event, 'Fruits')">Fruits</button>
-    <button class="tablinks" onclick="openIngredient(event, 'Carbonated Mixers')">Carbonated Mixers</button>
-    <button class="tablinks" onclick="openIngredient(event, 'Juices')">Juices</button>
-    <button class="tablinks" onclick="openIngredient(event, 'Bitters')">Bitters</button>
-    <button class="tablinks" onclick="openIngredient(event, 'Dairy Mixers')">Dairy Mixers</button>
-    <button class="tablinks" onclick="openIngredient(event, 'Caffeinated Mixers')">Caffeinated Mixers</button>
-    <button class="tablinks" onclick="openIngredient(event, 'Sauces')">Sauces</button>
-    <button class="tablinks" onclick="openIngredient(event, 'Prepared Mixes')">Prepared Mixes</button> 
+    <button class="tablinks" onclick="filterList('ingredient', 'Syrup')">Syrups</button>
+    <button class="tablinks" onclick="filterList('ingredient', 'Fruit')">Fruits</button>
+    <button class="tablinks" onclick="filterList('ingredient', 'Carbonated Mixer')">Carbonated Mixers</button>
+    <button class="tablinks" onclick="filterList('ingredient', 'Juice')">Juices</button>
+    <button class="tablinks" onclick="filterList('ingredient', 'Bitter')">Bitters</button>
+    <button class="tablinks" onclick="filterList('ingredient', 'Dairy Mixer')">Dairy Mixers</button>
+    <button class="tablinks" onclick="filterList('ingredient', 'Caffeinated Mixer')">Caffeinated Mixers</button>
+    <button class="tablinks" onclick="filterList('ingredient', 'Sauce')">Sauces</button>
+    <button class="tablinks" onclick="filterList('ingredient', 'Prepared Mixe')">Prepared Mixes</button> 
 </center>
 </div>
 
+<div id="tableInsert">
+
+<div class="listOver">
 {{#each ing}}
-  <div>
-    <p>Name: {{this.name}}</p>
-    <p>Type: {{this.type}}</p>
-    <p><a href="/ingredientdetails/{{this.id}}">Click Here for Details</a></p>
+<a href="/ingredientdetails/{{this.id}}">
+  <div class="itemBox">
+    <div class="listName">
+    <h1>{{this.name}}</h1>
+    </div>
+    <div class="listImage">
+    <img src="{{this.image}}" alt="" class="imageList">
+    </div>
   </div>
+</a>
 {{/each}}
+</div>
+
+</div>
