@@ -551,6 +551,7 @@ input:-moz-placeholder {
   display: flex;
   flex-direction: row;
   overflow: auto;
+  flex-wrap: wrap
 }
 
 .itemBox{
