@@ -1,14 +1,21 @@
 <h2 class="topPage">Liquor<span>Details</span></h2>
 <div class = "details">
 
-    <h4>Name: {{liquor.name}}</h4>
-    <h4>Brand: {{liquor.brand}}</h4>
-    <h4>Type: {{liquor.type}}</h4>
-    <h4>Flavored: {{liquor.flavor}}</h4>
-    <h4>Description: {{liquor.description}}</h4>
+    <h4>Name:</h4>
+    <p>{{liquor.name}}</p>
+    <h4>Brand:</h4>
+    <p>{{liquor.brand}}</p>
+    <h4>Type:</h4>
+    <p>{{liquor.type}}</p>
+    <h4>Flavored:</h4>
+    <p>{{liquor.flavor}}</p>
+    <h4>Description:</h4>
+    <p>{{liquor.description}}</p>
     <h4>Picture: <br><img class ="details-photo" <img src="{{liquor.image}}" alt=""></h4>
-    <h4>Website to purchase: <a href="{{liquor.url}}" target="blank">Click Here!</a></h4>
-    <h4>Price: {{liquor.price}}</h4>
+    <h4>Website to purchase:</h4>
+    <p><a href="{{liquor.url}}" target="blank">Click Here!</a></p>
+    <h4>Price:</h4>
+    <p>{{liquor.price}}</p>
 
 
 {{#if theUser}}

@@ -1,12 +1,17 @@
 <h2 class="topPage">Ingredient<span>Details</span></h2>
 <div class = "details">
 
-    <h4>Name: {{ingredient.name}}</h4>
-    <h4>Type: {{ingredient.type}}</h4>
-    <h4>Description: {{ingredient.description}}</h4>
+    <h4>Name:</h4>
+    <p><strong>{{ingredient.name}}</strong></p>
+    <h4>Type:</h4>
+    <p>{{ingredient.type}}</p>
+    <h4>Description:</h4>
+    <p>{{ingredient.description}}</p>
     <h4>Picture: <br><img class ="details-photo" <img src="{{ingredient.image}}" alt=""></h4>
-    <h4>Website to purchase: <a href="{{ingredient.url}}" target="blank">Click Here!</a></h4>
-    <h4>Price: {{ingredient.price}}</h4>
+    <h4>Website to purchase:</h4>
+    <p><a href="{{ingredient.url}}" target="blank">Click Here!</a></p>
+    <h4>Price:</h4>
+    <p>{{ingredient.price}}</p>
 
 {{#if theUser}}
         <a class="edit" href="/ingredients/{{ingredient._id}}/edit">Edit</a>
