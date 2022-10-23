@@ -24,7 +24,7 @@ const drinkSchema = new Schema({
                 ref: "Liquor"
         }, 
         quantity:{
-            type: Number
+            type: String
         },
         htmlID:{
             type:String

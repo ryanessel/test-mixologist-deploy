@@ -508,7 +508,7 @@ input:-moz-placeholder {
   background: bisque;
   color: rgba(138, 14, 14, 0.747);
   border-radius: 5px;
-  width: 350px;
+  width: 620px;
   padding-bottom: 10px;
   text-align: center;
   box-shadow: 0 10px 20px -10px rgb(0 0 0 / 75%);
@@ -517,6 +517,11 @@ input:-moz-placeholder {
   align-content: center;
   justify-content: space-between;
   align-items: center;
+}
+
+.details h4{
+  margin-bottom: 2px;
+  font-size: 20px;
 }
 
 .details-photo{
@@ -535,7 +540,7 @@ input:-moz-placeholder {
   background: bisque;
   color: rgba(138, 14, 14, 0.747);
   border-radius: 5px;
-  width: 350px;
+  width: 620px;
   padding-bottom: 10px;
   padding-top: 10px;
   text-align: center;
@@ -572,6 +577,11 @@ input:-moz-placeholder {
   background-color: #FFA07A;
 }
 
+.itemBox:hover {
+  background-color: #FFA07A;
+}
+
+
 .listName h1{
   margin: 0;
   padding: 0;
@@ -581,16 +591,20 @@ input:-moz-placeholder {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 5vw;
+  width: 10vw;
   height: 5vw;
   margin-bottom: 0.8vw;
+}
+
+.listName h1{
+  font-size: 20px;
 }
 
 .listImage{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 5vw;
+  width: 10vw;
   height: 5vw;
 }
 

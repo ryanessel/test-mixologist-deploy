@@ -1,16 +1,33 @@
 <h2 class="topPage">Drink<span>Details</span></h2>
 <div class = "details">
-    <h4>Cocktail Name: {{drink.name}}</h4>
+    <h4>Cocktail Name:</h4>
+    <p><strong>{{drink.name}}</strong></p>
     <h4>Picture: <br><img class ="details-photo" src="{{drink.image}}" alt=""></h4>
-    <h4>Liquors: {{#each drink.liquor}}{{this.liquorObject.name}}, {{/each}}</h4>
-    <h4>Ingredients: {{#each drink.ingredient}}{{this.ingredientObject.name}}, {{/each}}</h4>
-    <h4>Tools Needed: {{#each drink.tool}} {{this.toolObj}}, {{/each}}</h4>
-    <h4>Glasswear: {{#each drink.glasswear}} {{this.glasswearObj}}, {{/each}}</h4>
-    <h4>Instructions: {{drink.instructions}}</h4>
-    <h4>Description: {{drink.description}}</h4>
-    <h4>Website to purchase: <a href="{{drink.url}}">Click Here!</a></h4>
-    <h4>Price: 0
-    <h4>Like Count: {{drink.likeCount}}</h4>
+    <h4>Liquors:</h4>
+    {{#each drink.liquor}}
+    <p>{{this.liquorObject.name}} - {{this.quantity}}</p>
+    {{/each}}
+    <h4>Ingredients:</h4>
+    {{#each drink.ingredient}}
+    <p>{{this.ingredientObject.name}} - {{this.quantity}}</p>
+    {{/each}}
+    <h4>Tools Needed:</h4>
+    {{#each drink.tool}}
+    <p>{{this.toolObj}}</p>
+    {{/each}}
+    <h4>Glasswear:</h4>
+    <p>
+    {{#each drink.glasswear}}
+    {{this.glasswearObj}}
+    {{/each}}
+    </p>
+    <h4>Instructions:</h4>
+    <p>{{drink.instructions}}</p>
+    <h4>Description:</h4>
+    <p>{{drink.description}}</p>
+    <h4>Website to purchase:</h4>
+    <p><a href="{{drink.url}}">Click Here!</a></p>
+    {{!-- <h4>Like Count: {{drink.likeCount}}</h4> --}}
 
 
 {{#if theUser}}
