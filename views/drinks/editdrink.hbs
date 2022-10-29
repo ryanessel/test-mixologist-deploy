@@ -2,6 +2,8 @@
 
 <form action="/drinks/{{drink._id}}/edit" method="post" enctype="multipart/form-data">
 
+<div class = "create">
+
 <label for="name">Cocktail Name
     <input type="text" name="name" value="{{drink.name}}">
 </label>
@@ -216,7 +218,7 @@
                 </select>
             </td>
             <td>
-               <a href="#" onclick="addGlassLine('glassTable')">Add Tool</a> 
+               <a href="#" onclick="addGlassLine('glassTable')">Add Glasswear</a> 
             </td>
         </tr>
         {{#each drink.glasswear}}
@@ -284,10 +286,12 @@ Picture
 
 <button type ="submit">Submit Changes</button>
 </form>
-</div>
+
 
 <form action="/drinks/{{drink._id}}/cancel" method="get">
 <button type="submit">Cancel</button>
+</div>
 </form>
+
 
 <script src="/scripts/drinkDOM.js"></script>
