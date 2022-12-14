@@ -43,7 +43,7 @@ app.use(
         maxAge: 6000000
       }, // ADDED code below !!!
       store: MongoStore.create({
-        mongoUrl: 'mongodb://localhost/mixologist'
+        mongoUrl: process.env.mongoURL
       })
     })
   );
