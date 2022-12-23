@@ -12,8 +12,9 @@ require('dotenv').config();
 
 // =========== connection to DB =============
 
+
 mongoose
-  .connect(process.env.mongoURL)
+  .connect(process.env.MONGO_URL)
   .then(x => console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`))
   .catch(err => console.error('Error connecting to mongo', err));
 
@@ -43,7 +44,7 @@ app.use(
         maxAge: 6000000
       }, // ADDED code below !!!
       store: MongoStore.create({
-        mongoUrl: process.env.mongoURL
+        mongoUrl: process.env.MONGO_URL
       })
     })
   );
