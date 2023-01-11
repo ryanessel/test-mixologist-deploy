@@ -1,11 +1,10 @@
 const express = require('express');
 const app = express();
-const app = require("./app");
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
-const PORT = 3000;
+
 const path = require('path');
 const cookieParser = require("cookie-parser");
 var flash = require('connect-flash');
@@ -99,5 +98,5 @@ app.use((err, req, res, next) => {
     }
   });
 
-app.listen(PORT || 3000, () => console.log(`Listening on port ${PORT}`));
+
 
